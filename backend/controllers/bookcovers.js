@@ -8,7 +8,7 @@ import { dirname, join } from "node:path"; //CAR EN ESModules  path et __dirname
 import bookcovers from "bookcovers";//SCRAPPING BOOKCOVERS IMAGE API
 
 // Calculate the path to your SQLite database file
-const dbPath = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
+const dbPath = dirname(dirname(fileURLToPath(import.meta.url)));
 const dbFile = join(dbPath, "goodreads.db");
 
 let db = await open({//db connexion

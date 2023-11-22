@@ -1,0 +1,14 @@
+{
+  "name": "bookshelf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "frontend": "cd ./frontend && npm run dev",
+    "backend": "cd ./backend && npm run server",
+    "both":  "concurrently \"npm run frontend\" \"npm run backend\" "
+  },
+  "author": "",
+  "license": "ISC"
+}

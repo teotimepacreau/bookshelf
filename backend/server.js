@@ -1,6 +1,5 @@
 import fastify from "fastify";
 import fastifyView from "@fastify/view";
-import nunjucks from "nunjucks"
 
 import fastifyStatic from "@fastify/static";
 import { fileURLToPath } from "node:url";//CAR EN MODULE IMPORT path et __dirname ne fonctionnent pas 
@@ -16,12 +15,14 @@ const rootDir = (dirname(fileURLToPath(import.meta.url)));//car ESModules ne sup
 // HOMEPAGE ROUTE
 app.get('/data', async (req, res) => {//it's the handler function
     try{
+        res.header('Access-Control-Allow-Origin', '*')//Permettre CORS car le frontend est sur un autre port. * = allow requesting code from any origin to access the resource
+
         const { sanitarizedRows, bookcovers } = await displayBooks();
         const data = {
             sanitarizedRows : sanitarizedRows,
             bookcovers : bookcovers
         }
-        reply.send(data)// '/data' is the endpoint
+        res.send(data)// '/data' is the endpoint
     }catch(error){
         console.error(error)
     }
@@ -32,7 +33,7 @@ app.get('/data', async (req, res) => {//it's the handler function
 const start = async () => {
     try{
         await app.listen({port: 3000});
-        console.log('Server is running at 3030')
+        console.log('Server is running at 3000')
     }catch(err){
         console.error(err)
         process.exit(1)

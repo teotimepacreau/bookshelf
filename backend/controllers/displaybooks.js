@@ -7,7 +7,7 @@ import { dirname, join } from "node:path"; //CAR EN ESmodules path et __dirname 
 export async function displayBooks() {
   
   // Calculate the path to your SQLite database file
-  const dbPath = dirname(dirname(dirname(fileURLToPath(import.meta.url))));
+  const dbPath = dirname(dirname(fileURLToPath(import.meta.url)));
   const dbFile = join(dbPath, "goodreads.db");
 
   let db = await open({
