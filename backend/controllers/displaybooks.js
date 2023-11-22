@@ -18,7 +18,6 @@ export async function displayBooks() {
 
   const rows = await db.all("SELECT * FROM goodreads");
   const bookcovers = await db.all("SELECT * FROM bookcovers");
-  console.log("bookcovers:", bookcovers);
 
   const cleanedDataFromGoodreadsTable = rows.filter((obj) => {
     //conserve que les rows avec un ISBN13 pas vide et qui contient au moins un chiffre
@@ -40,7 +39,6 @@ export async function displayBooks() {
   }
 
   const sanitarizedRows = cleanedDataFromGoodreadsTable;
-  console.log("sanitarizedRows:", sanitarizedRows);
 
   return {
     sanitarizedRows,
