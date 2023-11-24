@@ -1,22 +1,20 @@
-import fetchBooks from "../assets/fetchBooksFromAPI.js"
+import fetchBooks from "./fetchBooksFromAPI.js"
 
 export default async function displayBooks(){
     try{
-        const { sanitarizedRows, bookcovers } = await fetchBooks();
-        console.log('sanitarizedRows object from displayBooks.js',sanitarizedRows, 'bookcovers object from displayBooks.js', bookcovers)
-        
+        const { sanitarizedRows, bookcovers } = await fetchBooks();        
         let result = ''
         for(let row of sanitarizedRows){
             for(let book of bookcovers){
                 if(book.ISBN13 === row.ISBN13){
                     result+=`
-                            <article className="book-card">
-                                    <div className="book-cover-parent">
-                                        <img data-tilt data-tilt-glare data-tilt-scale="1.1" data-tilt-max-glare="0.9" data-tilt-perspective="500" className="book-cover" src=${book.BookCoverUrl} />
+                            <article class="book-card">
+                                    <div class="book-cover-parent">
+                                        <img class="book-cover" src=${book.BookCoverUrl} />
                                     </div>
-                                    <section className="book-details">
+                                    <section class="book-details">
                                         <h2>${row.Title}</h2>
-                                        <ul className="book-details-list">
+                                        <ul class="book-details-list">
                                             <li>Author: ${row.Author}</li>
                                             <li>Publisher: ${row.Publisher}</li>
                                             <li>Average Rating (Goodreads): ${row.AverageRating}</li>

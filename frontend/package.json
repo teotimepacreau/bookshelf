@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "vanilla-tilt": "^1.8.1",
     "vite": "^5.0.0"
   }
 }

@@ -1,32 +1,26 @@
-import './assets/style.css'
-import './assets/fetchBooksFromAPI.js'
+import VanillaTilt from 'vanilla-tilt';
+import './assets/style.css';
+import './utils/fetchBooksFromAPI.js';
+import displayBooks from './utils/displayBooks.js';
 
-import displayBooks from './utils/displayBooks.js'
-async function addBookCovers () {
-    try {
+async function addBookCoversInTheContainer() {
+  try {
+    // ajouter les livres au container
+    document.getElementById('book-container').innerHTML = await displayBooks();
 
-      // Display books in the book-container
-      document.getElementById('book-container').innerHTML = await displayBooks();
-    } catch (error) {
-      console.error(error);
-    }
-}
-addBookCovers()
-
-const { VanillaTilt } = await import('./assets/vanilla-tilt.js');
-
-async function tilting (){
-    await addBookCovers()
-    // Initialize tilt effect for each book card
-    const bookCovers = document.querySelectorAll('.book-cover');
-    bookCovers.forEach((cover) => {
-      VanillaTilt.init(cover, {
+    // ajouter l'effet de tilt sur les couvertures des livres, uniquement ici car sinon appliqué avant l'ajout au DOM
+    const allBookCovers = document.querySelectorAll('.book-cover');
+    for (let book of allBookCovers) {
+      VanillaTilt.init(book, {
         max: 25,
         speed: 400,
         glare: true,
         'max-glare': 0.5,
       });
-    });
+    }
+  } catch (error) {
+    console.error(error);
+  }
 }
-tilting()
-    
+
+addBookCoversInTheContainer();
