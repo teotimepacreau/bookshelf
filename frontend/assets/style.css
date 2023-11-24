@@ -30,12 +30,11 @@ ol {
 /* Set core body defaults */
 body {
   font-family: system-ui, 'Segoe UI', 'Helvetica Neue', sans-serif;
-  min-height: 100dvh;
 }
 
 /* Set shorter line heights on headings and text-wrap */
 h1, h2, h3, h4 {
-  line-height: 1.3;
+  line-height: 1.2;
   text-wrap: balance;
 }
 
@@ -80,27 +79,21 @@ textarea:not([rows]) {
 
 *:focus-visible{
   transition: box-shadow 0.3s ease;
-  outline: 3px chartreuse solid;
-  box-shadow: 0 0 7px 0px chartreuse;
+  box-shadow: 0px 0px 0px 4px rgba(128, 255, 0, 0.389);
+  border-radius: 0.2rem;
 }
 
-/* FOCUS ON LIGHT BACKGROUNDS  */
-/* *:focus {
+button:focus-visible{
   outline: none;
-  box-shadow: 0 0 0 2px hsla(210, 52%, 42%, 1.00), 
-              0 0 0 .6rem hsla(200, 72%, 83%, 0.75);
-} */
-
+}
 
 
 
 input { 
-   appearance: none; 
-         border: none; 
-         outline: none; 
-         border-bottom: .2rem solid var(--white); 
-         border-radius: .1rem .1rem; 
-         padding: .2rem .6ch;
+  appearance: none; 
+  border: none; 
+  outline: none; 
+  padding: calc(0.1*var(--rythme)) calc(0.4*var(--rythme));
  }
 
 :root{
@@ -109,7 +102,8 @@ input {
 
 #main-container {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: minmax(100px, 0.5fr) 2fr;
+  gap: calc(2*var(--rythme));
 }
 
 #homepage-container {
@@ -125,17 +119,26 @@ input {
 /* SEARCH BAR */
 #search-bar-container {
   display: flex;
-  margin-right: var(--rythme);
+  justify-content: flex-end;
   margin-top: var(--rythme);
   outline: 1px solid rgb(139, 139, 139);
   border-radius: 0.2rem;
 }
 
+#search-bar-container > * {
+  flex: 1;
+  min-width: 40px;
+}
+
+#search-input {
+  width: 100%;
+}
+
 #search-btn {
+  flex-grow: 0;
   background-color: white;
   border: none;
-  border-left: 1px solid grey;
-  padding-inline: calc(.3*var(--rythme));
+  padding-inline: calc(.4*var(--rythme));
   transition: all 0.2s ease-out;
 }
 
