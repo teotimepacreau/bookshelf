@@ -22,8 +22,8 @@ figure, blockquote, dl, dd {
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
+ul,
+ol {
   list-style: none;
 }
 
@@ -41,10 +41,7 @@ h1, h2, h3, h4 {
 
 
 /* A elements that don't have a class get default styles */
-a {
-  color: currentColor;
-  text-underline-offset: 0.3ex;
-}
+
 
 button { 
    cursor: pointer; 
@@ -94,14 +91,8 @@ textarea:not([rows]) {
               0 0 0 .6rem hsla(200, 72%, 83%, 0.75);
 } */
 
-button:focus-visible{
-  outline-offset: 0.8ex;
-}
 
-a:focus-visible{
-  outline-offset: 0.8ex;
-  box-shadow: none;
-}
+
 
 input { 
    appearance: none; 
@@ -116,12 +107,48 @@ input {
     --rythme: 1rlh;
 }
 
+#main-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
 
 #homepage-container {
-    padding: var(--rythme);
+  padding: var(--rythme);
 }
+
 #book-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap : var(--rythme);
+    gap : calc(2*var(--rythme));
+}
+
+/* SEARCH BAR */
+#search-bar-container {
+  display: flex;
+  margin-right: var(--rythme);
+  margin-top: var(--rythme);
+  outline: 1px solid rgb(139, 139, 139);
+  border-radius: 0.2rem;
+}
+
+#search-btn {
+  background-color: white;
+  border: none;
+  border-left: 1px solid grey;
+  padding-inline: calc(.3*var(--rythme));
+  transition: all 0.2s ease-out;
+}
+
+#search-btn i {
+  background-color: rgba(128, 128, 128, 0.1);
+  padding: calc(0.15*var(--rythme));
+  border-radius: 50%;
+}
+
+#search-btn:hover{
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+#search-btn:hover i {
+  background-color: white;
 }
