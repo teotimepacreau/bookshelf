@@ -13,7 +13,7 @@ export default async function displayBooks(){
                                         <img class="book-cover" src=${book.BookCoverUrl} />
                                     </div>
                                     <section class="book-details">
-                                        <h2>${row.Title}</h2>
+                                        <h2 class="book-title">${row.Title}</h2>
                                         <ul class="book-details-list">
                                             <li>Author: ${row.Author}</li>
                                             <li>Publisher: ${row.Publisher}</li>
