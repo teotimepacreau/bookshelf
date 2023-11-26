@@ -7,14 +7,14 @@ const searchButton = document.querySelector("#search-btn");
 searchButton.addEventListener("click", (e) => {
 
   // I.
-  const searchedByTheUser = searchInput.value;
+  const searchedByTheUser = searchInput.value.toLowerCase();
 
 
   const allBooksTitles = document.querySelectorAll(".book-title");
 
   for (let bookTitle of allBooksTitles) {
-    const bookContainer = bookTitle.parentElement.parentElement;
-    if (!bookTitle.innerText.includes(searchedByTheUser)) {
+    const bookContainer = bookTitle.closest('.all-card-content');
+    if (!bookTitle.innerText.toLowerCase().includes(searchedByTheUser)) {
       bookContainer.style.display = "none";
       
     //II.
@@ -25,7 +25,7 @@ searchButton.addEventListener("click", (e) => {
 });
 
 searchInput.addEventListener('input', ()=>{
-    const allBooksContainer = document.querySelectorAll(".book-card");
+    const allBooksContainer = document.querySelectorAll(".all-card-content");
     if(searchInput.value.length === 0){
         for(let book of allBooksContainer){
             book.style.display = "block"
