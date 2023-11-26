@@ -8,7 +8,6 @@ export default async function displayBooks(){
 
         const containerForAllCards = document.querySelector("[data-container-for-all-cards]")
 
-        // let result = ''
         for(let row of sanitarizedRows){
             for(let book of bookcovers){
                 if(book.ISBN13 === row.ISBN13){
@@ -29,27 +28,10 @@ export default async function displayBooks(){
                     const averagerating = card.querySelector("[data-averagerating]")
                     averagerating.textContent = row.AverageRating
 
-                    containerForAllCards.append(card)//attache la carte au container
-
-                    // result+=`
-                    //         <article class="book-card">
-                    //                 <div class="book-cover-parent">
-                    //                     <img class="book-cover" src=${book.BookCoverUrl} />
-                    //                 </div>
-                    //                 <section class="book-details">
-                    //                     <h2 class="book-title">${row.Title}</h2>
-                    //                     <ul class="book-details-list">
-                    //                         <li>Author: ${row.Author}</li>
-                    //                         <li>Publisher: ${row.Publisher}</li>
-                    //                         <li>Average Rating (Goodreads): ${row.AverageRating}</li>
-                    //                     </ul>
-                    //                 </section>
-                    //         </article>
-                    //         `
+                    containerForAllCards.append(card)//attache la carte au container       `
                 }
             }
         }
-        // return result
     }catch(error){
         console.error(error)
     }

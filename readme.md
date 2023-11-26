@@ -13,5 +13,5 @@
 
 ### Frontend
 4. Fetching the data from the /data route [fetchBooksFromAPI.js](./frontend/utils/fetchBooksFromAPI.js)
-5. Then using <template> HTML functionnality to dynamically render the content. [displayBooks.js](./frontend/utils/displayBooks.js)
+5. Then using <template> HTML functionnality to avoid using innerHTML for security and bugs. [displayBooks.js](./frontend/utils/displayBooks.js)
 6. Search function : allowing to search a particular book title, hiding results that d'ont math the input. Showing all results if no input entered. [search.js](./frontend/frontJS/search.js)
