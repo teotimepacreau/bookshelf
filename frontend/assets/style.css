@@ -110,7 +110,7 @@ input {
   padding: var(--rythme);
 }
 
-#book-container {
+#library {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap : calc(2*var(--rythme));

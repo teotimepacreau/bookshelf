@@ -5,7 +5,7 @@ import fastifyStatic from "@fastify/static";
 import { fileURLToPath } from "node:url";//CAR EN MODULE IMPORT path et __dirname ne fonctionnent pas 
 import { dirname, join } from 'node:path';//CAR EN MODULE IMPORT path et __dirname ne fonctionnent pas 
 
-import { displayBooks } from "./controllers/displaybooks.js";
+import { passBookDataToFront } from "./controllers/passBookDataToFront.js";
 
 const app = fastify();
 
@@ -17,7 +17,7 @@ app.get('/data', async (req, res) => {//it's the handler function
     try{
         res.header('Access-Control-Allow-Origin', '*')//Permettre CORS car le frontend est sur un autre port. * = allow requesting code from any origin to access the resource
 
-        const { sanitarizedRows, bookcovers } = await displayBooks();
+        const { sanitarizedRows, bookcovers } = await passBookDataToFront();
         const data = {
             sanitarizedRows : sanitarizedRows,
             bookcovers : bookcovers

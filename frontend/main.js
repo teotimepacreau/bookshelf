@@ -6,7 +6,8 @@ import displayBooks from './utils/displayBooks.js';
 async function addBookCoversInTheContainer() {
   try {
     // ajouter les livres au container
-    document.getElementById('book-container').innerHTML = await displayBooks();
+    // document.getElementById('book-container').innerHTML =
+    await displayBooks();
 
     // ajouter l'effet de tilt sur les couvertures des livres, uniquement ici car sinon appliqué avant l'ajout au DOM
     const allBookCovers = document.querySelectorAll('.book-cover');

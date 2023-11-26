@@ -4,7 +4,7 @@ import { open } from "sqlite";
 import { fileURLToPath } from "node:url"; //CAR EN ESModules  path et __dirname ne fonctionnent pas
 import { dirname, join } from "node:path"; //CAR EN ESmodules path et __dirname ne fonctionnent pas
 
-export async function displayBooks() {
+export async function passBookDataToFront() {
   
   // Calculate the path to your SQLite database file
   const dbPath = dirname(dirname(fileURLToPath(import.meta.url)));
