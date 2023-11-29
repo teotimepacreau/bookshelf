@@ -7,6 +7,10 @@
    padding: 0;
 }
 
+*{
+  accent-color: var(--surface1);
+}
+
 /* Prevent font size inflation */
 html {
   -moz-text-size-adjust: none;
@@ -43,7 +47,8 @@ h1, h2, h3, h4 {
 
 
 button { 
-   cursor: pointer; 
+   cursor: pointer;
+   background-color: unset;
  }
 
 /* Make images easier to work with */
@@ -78,26 +83,28 @@ textarea:not([rows]) {
  }
 
 *:focus-visible{
-  transition: box-shadow 0.3s ease;
-  box-shadow: 0px 0px 0px 4px rgba(128, 255, 0, 0.389);
-  border-radius: 0.2rem;
+  transition: box-shadow 0.2s ease;
+  box-shadow: 0px 0px 1px 3px var(--surface1);
+  border-radius: inherit;
 }
 
 button:focus-visible{
   outline: none;
-}
+} 
 
 
 
-input { 
+input[type = "search"] { 
   appearance: none; 
   border: none; 
   outline: none; 
-  padding: calc(0.1*var(--rythme)) calc(0.4*var(--rythme));
  }
 
 :root{
     --rythme: 1rlh;
+    --surface1: oklch(50% 0.02 200);
+    --surface1with5opacity: oklch(from var(--surface1) l c h / 5%);
+    --surface1with10opacity: oklch(from var(--surface1) l c h / 10%)
 }
 
 #main-container {
@@ -120,38 +127,114 @@ input {
 #search-bar-container {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   margin-top: var(--rythme);
-  outline: 1px solid rgb(139, 139, 139);
+  outline: 1px solid var(--surface1);
   border-radius: 0.2rem;
 }
 
 #search-bar-container > * {
   flex: 1;
-  min-width: 40px;
 }
 
 #search-input {
   width: 100%;
+  padding-inline: calc(0.3*var(--rythme));
 }
 
 #search-btn {
   flex-grow: 0;
-  background-color: white;
   border: none;
   padding-inline: calc(.4*var(--rythme));
   transition: all 0.2s ease-out;
+  padding-block: calc(0.1*var(--rythme));
+
 }
 
 #search-btn i {
-  background-color: rgba(128, 128, 128, 0.1);
-  padding: calc(0.15*var(--rythme));
+  background-color: var(--surface1with5opacity);
+  padding: calc(0.2*var(--rythme));
   border-radius: 50%;
 }
 
 #search-btn:hover{
-  background-color: rgba(128, 128, 128, 0.1);
+  background-color: var(--surface1with5opacity);
 }
 
 #search-btn:hover i {
   background-color: white;
+}
+
+/* FILTER */
+#filter-container {
+  margin-top: var(--rythme);
+  position: relative;
+}
+#filter-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--rythme);
+  outline: 1px solid var(--surface1);
+  border-radius: 0.2rem;
+  border: none;
+  padding-inline: calc(0.3*var(--rythme));
+  padding-block: calc(0.1*var(--rythme));
+}
+
+#filter-button i {
+  background-color: var(--surface1with5opacity);
+  padding: calc(0.2*var(--rythme));
+  border-radius: 50%;
+  transition: all 0.3s ease-out;
+}
+
+#filter-button i:hover {
+  background-color: var(--surface1with10opacity);
+}
+
+#all-filters{
+  display: none;
+  margin-top: calc(0.25*var(--rythme));
+  width: 100%;
+  position: absolute;
+  padding: calc(0.5*var(--rythme));
+  border: none;
+  background-color: var(--surface1with5opacity); 
+  border-radius: 0.2rem;
+  border: none;
+ }
+
+.star-checkboxes{
+  cursor: pointer;
+  display: flex;
+  gap: 0.5ch;
+  align-items: center;
+  transition: background-color 0.3s ease-out;
+  padding: calc(0.25*var(--rythme));
+  border-radius: 0.15rem;
+}
+
+.star-checkboxes:hover{
+  background-color: var(--surface1with10opacity);
+}
+
+.star-checkboxes i {
+  color: var(--surface1);
+}
+
+.filters-visible {
+  display: block!important;
+  animation: fade-in 0.2s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }to{
+    opacity: 1;
+    transform: scale(1);
+  }
 }

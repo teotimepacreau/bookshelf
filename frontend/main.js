@@ -2,6 +2,8 @@ import VanillaTilt from 'vanilla-tilt';
 import './assets/style.css';
 import './utils/fetchBooksFromAPI.js';
 import displayBooks from './utils/displayBooks.js';
+import './frontJS/search.js'
+import './frontJS/filter.js'
 
 async function addBookCoversInTheContainer() {
   try {
