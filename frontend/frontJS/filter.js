@@ -1,23 +1,19 @@
+// FILTER ANIMATION
+
 const filterBtn = document.querySelector('#filter-button')
 
-console.log(filterBtn)
-
 const filtersContainer = document.querySelector('#all-filters')
-console.log(filtersContainer)
 
 filterBtn.addEventListener('click', (e)=>{
-    console.log('filter-btn clicked')
-    filtersContainer.classList.add("filters-visible")
+    filtersContainer.classList.toggle("filters-visible")
 
     const chevron = 
     filterBtn.querySelector('i')
-    console.log(chevron)
-    chevron.style.transform = "rotate(180deg)"
+    chevron.classList.toggle("dropdown-icon")
 })
 
-
+// ACTIVATE CHECKBOX IF CLICK ON DIV
 const allStarCheckboxes = document.querySelectorAll('.star-checkboxes')
-console.log(allStarCheckboxes)
 
 allStarCheckboxes.forEach((item)=> {
     item.addEventListener('click', (e)=>{
@@ -28,6 +24,5 @@ allStarCheckboxes.forEach((item)=> {
         }else{
             itemCheckbox.checked = true
         }
-        
     })
 })

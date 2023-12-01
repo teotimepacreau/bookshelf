@@ -166,6 +166,9 @@ input[type = "search"] {
 }
 
 /* FILTER */
+.dropdown-icon {
+  transform: rotate(180deg);
+}
 #filter-container {
   margin-top: var(--rythme);
   position: relative;
