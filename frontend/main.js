@@ -4,7 +4,7 @@ import './utils/fetchBooksFromAPI.js';
 import displayBooks from './utils/displayBooks.js';
 
 
-async function addBookCoversInTheContainer() {
+async function loadingOrder() {
   try {
     // ajouter les livres au container
     // document.getElementById('book-container').innerHTML =
@@ -34,4 +34,4 @@ async function addBookCoversInTheContainer() {
   }
 }
 
-addBookCoversInTheContainer();
+loadingOrder();

@@ -1,5 +1,7 @@
 ## What I learned :
 - separate frontend and backend in different folders
+- working with ES Modules
+- loading asynchronously ES Modules thanks to the import('') function
 - passing data from backend to frontend
 - using Vite for frontend to benefits of Hot Module Replacement and imports logic
 - HTML <template> functionnality
