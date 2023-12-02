@@ -44,19 +44,19 @@ const filterFunction = () => {
   // 1. attraper la valeur de la checkbox
   // 2. repartir de cette valeur et
   // function filterBooksByRating(selectedRating) {
-  const allBooksContainers = document.querySelectorAll(".book-card");
-  console.log(allBooksContainers);
-  allBooksContainers.forEach((bookContainer) => {
-    const bookRating = bookContainer.querySelector("[data-averagerating]");
-    console.log(bookRating);
-
-    //         if (bookRating <= selectedRating) {
-    //             bookContainer.style.display = 'block';
-    //         } else {
-    //             bookContainer.style.display = 'none';
-    //         }
-  });
-  // }
-};
-
+    function filterBooksByRating(selectedRating) {
+      const allBooksContainers = document.querySelectorAll(".book-card");
+      allBooksContainers.forEach((bookContainer) => {
+        const bookRating = parseInt(bookContainer.querySelector("[data-averagerating]").textContent);
+        console.log(bookRating);
+    
+        if (bookRating < selectedRating) {
+          bookContainer.style.display = 'block';
+        } else {
+          bookContainer.style.display = 'none';
+        }
+      });
+    }
+    
+}
 export default filterFunction
