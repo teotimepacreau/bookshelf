@@ -2,8 +2,7 @@ import VanillaTilt from 'vanilla-tilt';
 import './assets/style.css';
 import './utils/fetchBooksFromAPI.js';
 import displayBooks from './utils/displayBooks.js';
-import './frontJS/search.js'
-import './frontJS/filter.js'
+
 
 async function addBookCoversInTheContainer() {
   try {
@@ -21,6 +20,15 @@ async function addBookCoversInTheContainer() {
         'max-glare': 0.5,
       });
     }
+      // Dynamically import search.js and filter.js after all the content is added to the page
+
+      // {default: searchFunction} obligé car permet de dire à JS: va chercher la fonction exportée par défaut du module
+      const { default: searchFunction } = await import('./frontJS/search.js');
+      const { default: filterFunction } = await import('./frontJS/filter.js');
+  
+      searchFunction();
+      filterFunction();
+
   } catch (error) {
     console.error(error);
   }

@@ -83,7 +83,7 @@ textarea:not([rows]) {
  }
 
 *:focus-visible{
-  transition: box-shadow 0.2s ease;
+  transition: all 0.2s ease;
   box-shadow: 0px 0px 1px 3px var(--surface1);
   border-radius: inherit;
 }
@@ -97,8 +97,6 @@ input[type="checkbox"]:focus-visible{
 button:focus-visible{
   outline: none;
 } 
-
-
 
 input[type = "search"] { 
   appearance: none; 
