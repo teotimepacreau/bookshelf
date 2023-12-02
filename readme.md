@@ -3,9 +3,8 @@
 - working with ES Modules
 - loading asynchronously ES Modules thanks to the import('') function
 - passing data from backend to frontend
-- using Vite for frontend to benefits of Hot Module Replacement and imports logic
+- using Vite for frontend to benefits of Hot Module Replacement and imports every module in one JS file logic
 - HTML <template> functionnality
-
 
 ## In-depth details of the project :
 ### Backend
@@ -17,3 +16,4 @@
 4. Fetching the data from the /data route [fetchBooksFromAPI.js](./frontend/utils/fetchBooksFromAPI.js)
 5. Then using <template> HTML functionnality to avoid using innerHTML for security and bugs. [displayBooks.js](./frontend/utils/displayBooks.js)
 6. Search function : allowing to search a particular book title, hiding results that d'ont math the input. Showing all results if no input entered. [search.js](./frontend/frontJS/search.js)
+7. Filter function : filter books by rating through checkboxes. If the checkbox is unchecked it returns to initial state.[filter.js](./frontend/frontJS/filter.js)

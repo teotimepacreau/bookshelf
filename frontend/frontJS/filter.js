@@ -1,6 +1,6 @@
 const filterFunction = () => {
+  
   // FILTER ANIMATION
-
   const filterBtn = document.querySelector("#filter-button");
 
   const filtersContainer = document.querySelector("#all-filters");
@@ -22,6 +22,7 @@ const filterFunction = () => {
       if (!e.target.matches("input")) {
         //je vérifie que le clic n'est pas sur la checkbox mais bien sur le container pour être sûr de ne pas empêcher la fonctionnalité native de la checkbox
         itemCheckbox.checked = !itemCheckbox.checked; //quand cliqué met l'attribute checked en l'inverse de son état précédent
+        handleCheckboxChange(itemCheckbox)
       }
     });
     // ACTIVATE CHECKBOX FOR KEYBOARD USERS
@@ -29,34 +30,46 @@ const filterFunction = () => {
       if (e.code === "Space") {
         e.preventDefault();
         itemCheckbox.checked = !itemCheckbox.checked;
+        handleCheckboxChange(itemCheckbox)
       }
     });
+    item.addEventListener('change', ()=>{
+        handleCheckboxChange(itemCheckbox)
+    });
+  });
 
-    itemCheckbox.addEventListener("change", () => {
+  function handleCheckboxChange(itemCheckbox) {
+    if(itemCheckbox.checked === true){
       const selectedRating = parseInt(itemCheckbox.value);
       console.log(selectedRating);
       filterBooksByRating(selectedRating);
-    });
-  });
+    }else{
+      const allBooksContainers = document.querySelectorAll(".book-card");
+      allBooksContainers.forEach((item)=>{
+        item.style.display = "block"
+      })
+    }
+}
 
   // FILTER FUNCTION
   // PSEUDO CODE : au clic sur la checkbox je souhaite que seuls s'affichent les livres avec une note inférieure ou égale au chiffre du label de la checkbox
   // 1. attraper la valeur de la checkbox
   // 2. repartir de cette valeur et
   // function filterBooksByRating(selectedRating) {
-    function filterBooksByRating(selectedRating) {
-      const allBooksContainers = document.querySelectorAll(".book-card");
-      allBooksContainers.forEach((bookContainer) => {
-        const bookRating = parseInt(bookContainer.querySelector("[data-averagerating]").textContent);
-        console.log(bookRating);
-    
-        if (bookRating < selectedRating) {
-          bookContainer.style.display = 'block';
-        } else {
-          bookContainer.style.display = 'none';
-        }
-      });
-    }
-    
-}
-export default filterFunction
+  function filterBooksByRating(selectedRating) {
+    const allBooksContainers = document.querySelectorAll(".book-card");
+    allBooksContainers.forEach((bookContainer) => {
+      const bookRating = parseInt(
+        bookContainer.querySelector("[data-averagerating]").textContent
+      );
+      console.log(bookRating);
+
+      if (bookRating === selectedRating) {
+        bookContainer.style.display = "block";
+      } else {
+        bookContainer.style.display = "none";
+      }
+    });
+  }
+};
+export default filterFunction;
