@@ -88,6 +88,12 @@ textarea:not([rows]) {
   border-radius: inherit;
 }
 
+input[type="checkbox"]:focus-visible{
+  box-shadow: none;
+  outline-offset: 4px;
+  outline-color: var(--surface1);
+}
+
 button:focus-visible{
   outline: none;
 } 
@@ -99,6 +105,14 @@ input[type = "search"] {
   border: none; 
   outline: none; 
  }
+
+/* Increase the size of the checkbox */
+input[type="checkbox"] {
+  width: calc(.6*var(--rythme)); /* Adjust the width */
+  height: calc(.6*var(--rythme)); /* Adjust the height */
+}
+
+
 
 :root{
     --rythme: 1rlh;
@@ -209,10 +223,14 @@ input[type = "search"] {
   border: none;
  }
 
+#star-filter-rating-divider{
+  margin-block: calc(0.25*var(--rythme));
+}
+
 .star-checkboxes{
   cursor: pointer;
   display: flex;
-  gap: 0.5ch;
+  gap: 1ch;
   align-items: center;
   transition: background-color 0.3s ease-out;
   padding: calc(0.25*var(--rythme));
@@ -225,6 +243,12 @@ input[type = "search"] {
 
 .star-checkboxes i {
   color: var(--surface1);
+}
+
+.star-group {
+  display: flex;
+  align-items: center;
+  gap: 0.25ch;
 }
 
 .filters-visible {

@@ -13,16 +13,22 @@ filterBtn.addEventListener('click', (e)=>{
 })
 
 // ACTIVATE CHECKBOX IF CLICK ON DIV
-const allStarCheckboxes = document.querySelectorAll('.star-checkboxes')
+const allStarCheckboxes = document.querySelectorAll('.star-checkboxes');
 
-allStarCheckboxes.forEach((item)=> {
-    item.addEventListener('click', (e)=>{
-        const itemCheckbox = 
-        item.querySelector('input')
-        if(itemCheckbox.checked === true){
-            itemCheckbox.checked = false
-        }else{
-            itemCheckbox.checked = true
+allStarCheckboxes.forEach((item) => {
+    const itemCheckbox = item.querySelector('input');
+
+    item.addEventListener('click', (e) => {
+        if (!e.target.matches('input')) {//je vérifie que le clic n'est pas sur la checkbox mais bien sur le container pour être sûr de ne pas empêcher la fonctionnalité native de la checkbox
+            itemCheckbox.checked = !itemCheckbox.checked;//quand cliqué met l'attribute checked en l'inverse de son état précédent
         }
-    })
-})
+    });
+// ACTIVATE CHECKBOX FOR KEYBOARD USERS
+
+    item.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+            e.preventDefault();
+            itemCheckbox.checked = !itemCheckbox.checked;
+        }
+    });
+});
