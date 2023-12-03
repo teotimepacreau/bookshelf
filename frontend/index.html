@@ -9,11 +9,23 @@
 <body>
     <div id="homepage-container">
         <header>
-          <ul>
+          <ul id="header-flexer">
             <li>My Bookshelf</li>
-            <li>Add a book</li>
+            <button id="btn-connexion">Se connecter</button>
           </ul>
         </header>
+        <dialog id="connexion-dialog">
+          <form method="dialog">
+            <label for="connexion-username">Nom d'utilisateur</label>
+              <input type="text" name="username" id="connexion-username" autocomplete="off">
+              <label for="connexion-password">Mot de passe</label>
+              <input type="password" name="password" id="connexion-password" autocomplete="off">
+              <div id="connexion-btn-flexer">
+              <button id="cancel-connexion-dialog" type="reset">Annuler</button>
+              <button type="submit">Me connecter</button>
+            </div>
+          </form>
+        </dialog>
         <!--  I.1 je souhaite afficher le titre, l'auteur, la maison d'édition et la note moyenne goodreads de chaque livre via l'objet sanitarizedRows et l'objet bookcovers -->
         <main id="main-container">
           <aside>
@@ -34,42 +46,42 @@
                 <span>Par note</span>
                 <hr id="star-filter-rating-divider">
                 <div class="star-checkboxes">
-                  <input type="checkbox" name="book-rating" id="zero-star" value="0">
+                  <input type="radio" name="book-rating" id="zero-star" value="0">
                   <div class="star-group">
                     <label for="zero-star">0</label>
                     <i class="ph-fill ph-star"></i>
                   </div>
                 </div>
                 <div class="star-checkboxes">
-                  <input type="checkbox" name="book-rating" id="one-star" value="1">
+                  <input type="radio" name="book-rating" id="one-star" value="1">
                   <div class="star-group">
                     <label for="one-star">1</label>
                     <i class="ph-fill ph-star"></i>
                   </div>
                 </div>
                 <div class="star-checkboxes">
-                  <input type="checkbox" name="book-rating" id="two-stars" value="2">
+                  <input type="radio" name="book-rating" id="two-stars" value="2">
                   <div class="star-group">
                     <label for="two-stars">2</label>
                     <i class="ph-fill ph-star"></i>
                   </div>
                 </div>
                 <div class="star-checkboxes">
-                  <input type="checkbox" name="book-rating" id="three-stars" value="3">
+                  <input type="radio" name="book-rating" id="three-stars" value="3">
                   <div class="star-group">
                     <label for="three-stars">3</label>
                     <i class="ph-fill ph-star"></i>
                   </div>
                 </div>
                 <div class="star-checkboxes">
-                  <input type="checkbox" name="book-rating" id="four-stars" value="4">
+                  <input type="radio" name="book-rating" id="four-stars" value="4">
                   <div class="star-group">
                     <label for="four-stars">4</label>
                     <i class="ph-fill ph-star"></i>
                   </div>
                 </div>
                 <div class="star-checkboxes">
-                  <input type="checkbox" name="book-rating" id="five-stars" value="5">
+                  <input type="radio" name="book-rating" id="five-stars" value="5">
                   <div class="star-group">
                     <label for="five-stars">5</label>
                     <i class="ph-fill ph-star"></i>

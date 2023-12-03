@@ -7,6 +7,8 @@ import { dirname, join } from 'node:path';//CAR EN MODULE IMPORT path et __dirna
 
 import { passBookDataToFront } from "./controllers/passBookDataToFront.js";
 
+import { loginAction, logoutAction } from "./actions/auth.js";
+
 const app = fastify();
 
 // SERVE STATIC FILES
@@ -28,6 +30,11 @@ app.get('/data', async (req, res) => {//it's the handler function
     }
      
 });
+
+// AUTHENTICATION
+app.get('/login', loginAction)
+
+app.post('/logout', logoutAction)
 
 // START SERVER
 const start = async () => {

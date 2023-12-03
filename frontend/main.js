@@ -24,10 +24,14 @@ async function loadingOrder() {
 
       // {default: searchFunction} obligé car permet de dire à JS: va chercher la fonction exportée par défaut du module
       const { default: searchFunction } = await import('./frontJS/search.js');
+      
       const { default: filterFunction } = await import('./frontJS/filter.js');
+
+      const {default: btnConnexion } = await import ('./frontJS/btnConnexion.js')
   
       searchFunction();
       filterFunction();
+      btnConnexion();
 
   } catch (error) {
     console.error(error);

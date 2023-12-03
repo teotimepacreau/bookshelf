@@ -88,10 +88,22 @@ textarea:not([rows]) {
   border-radius: inherit;
 }
 
+input[type="radio"]:focus-visible{
+  box-shadow: none;
+  outline-offset: 4px;
+  outline-color: var(--surface1);
+}
+
 input[type="checkbox"]:focus-visible{
   box-shadow: none;
   outline-offset: 4px;
   outline-color: var(--surface1);
+}
+
+/* Increase the size of the checkbox */
+input[type="checkbox"] {
+  width: calc(.6*var(--rythme)); /* Adjust the width */
+  height: calc(.6*var(--rythme)); /* Adjust the height */
 }
 
 button:focus-visible{
@@ -103,23 +115,36 @@ input[type = "search"] {
   border: none; 
   outline: none; 
  }
-
-/* Increase the size of the checkbox */
-input[type="checkbox"] {
-  width: calc(.6*var(--rythme)); /* Adjust the width */
-  height: calc(.6*var(--rythme)); /* Adjust the height */
+ input[type="text"]:focus-visible,
+ input[type="password"]:focus-visible {
+  border: none;
+  border-bottom: 1px solid var(--accent);
+  background-color: var(--accentwith10opacity);
+  outline: none;
+  box-shadow: none;
 }
+
+
 
 
 
 :root{
     --rythme: 1rlh;
+    --bg: oklch(99% 0.005 200);
+    --accent: oklch(30% 0.2 200);
+    --accentwith10opacity:oklch(from var(--accent) l c h / 10%);
     --surface1: oklch(50% 0.02 200);
     --surface1with5opacity: oklch(from var(--surface1) l c h / 5%);
-    --surface1with10opacity: oklch(from var(--surface1) l c h / 10%)
+    --surface1with10opacity: oklch(from var(--surface1) l c h / 10%);
+    --shadow: oklch(5% 0.02 200 / 20%)
+}
+
+body {
+  background-color: var(--bg);
 }
 
 #main-container {
+  margin-top: var(--rythme);
   display: grid;
   grid-template-columns: minmax(100px, 0.5fr) 2fr;
   gap: calc(2*var(--rythme));
@@ -133,6 +158,55 @@ input[type="checkbox"] {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap : calc(2*var(--rythme));
+}
+
+/* HEADER */
+#header-flexer {
+  display: flex;
+  justify-content: space-between;
+}
+
+#btn-connexion {
+  position: relative;
+  padding-block: calc(0.125*var(--rythme));
+  padding-inline: calc(0.5*var(--rythme));
+  border: 1px ridge transparent;
+  background-color: var(--surface1with10opacity);
+  border-radius: 0.3rem;
+  box-shadow: 0.5px 0.5px 1px 0px var(--shadow);
+  transition: all 0.2s ease;
+  line-height: 1rlh;
+}
+
+#btn-connexion:hover {
+  background-color: var(--surface1with10opacity);
+  border: 1px ridge var(--surface1);
+}
+
+dialog {
+  padding: var(--rythme);
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+}
+
+dialog > form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.25*var(--rythme));
+}
+
+dialog input {
+  appearance: none;
+  border: none;
+  border-bottom: 1px solid var(--surface1);
+  background-color: var(--surface1with5opacity);
+  border-radius: .2rem .2rem 0 0;
+}
+
+#connexion-btn-flexer {
+  margin-top: calc(0.5*var(--rythme));
+  display: flex;
+  gap: calc(0.25*var(--rythme));
 }
 
 /* SEARCH BAR */
@@ -229,7 +303,8 @@ input[type="checkbox"] {
   cursor: pointer;
   display: flex;
   gap: 1ch;
-  align-items: center;
+  line-height: 1rlh;
+  align-items: baseline;
   transition: background-color 0.3s ease-out;
   padding: calc(0.25*var(--rythme));
   border-radius: 0.15rem;
