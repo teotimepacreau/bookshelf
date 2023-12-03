@@ -47,8 +47,10 @@ h1, h2, h3, h4 {
 
 
 button { 
-   cursor: pointer;
-   background-color: unset;
+  line-height: 1rlh;
+  cursor: pointer;
+  background-color: unset;
+  transition: all 0.3s ease-out;
  }
 
 /* Make images easier to work with */
@@ -136,6 +138,7 @@ input[type = "search"] {
     --surface1: oklch(50% 0.02 200);
     --surface1with5opacity: oklch(from var(--surface1) l c h / 5%);
     --surface1with10opacity: oklch(from var(--surface1) l c h / 10%);
+    --surface1with98opacity: oklch(from var(--surface1) l c h / 98%);
     --shadow: oklch(5% 0.02 200 / 20%)
 }
 
@@ -152,6 +155,7 @@ body {
 
 #homepage-container {
   padding: var(--rythme);
+  position: relative;
 }
 
 #library {
@@ -166,8 +170,8 @@ body {
   justify-content: space-between;
 }
 
+
 #btn-connexion {
-  position: relative;
   padding-block: calc(0.125*var(--rythme));
   padding-inline: calc(0.5*var(--rythme));
   border: 1px ridge transparent;
@@ -184,10 +188,23 @@ body {
 }
 
 dialog {
-  padding: var(--rythme);
+  transform: translateY(5%);
+  left: 83dvw;
+  z-index: 999;
+  position: absolute;
+  padding: calc(0.5*var(--rythme));
   border: 1px solid transparent;
   border-radius: 0.3rem;
+  box-shadow: 1px 1px 3px 0px var(--shadow);
+  transition: all 0.2s ease-out;
+  opacity: 1;
 }
+
+/* dialog::backdrop{
+  backdrop-filter: blur(.04rem);
+  background: unset;
+  transition: all 0.2s ease-out;
+} */
 
 dialog > form {
   display: flex;
@@ -198,15 +215,47 @@ dialog > form {
 dialog input {
   appearance: none;
   border: none;
+  padding-block: 0.3ch;
+  padding-inline: 0.8ch;
   border-bottom: 1px solid var(--surface1);
   background-color: var(--surface1with5opacity);
   border-radius: .2rem .2rem 0 0;
+  transition: all 0.2s ease-out;
+}
+
+dialog button{
+  background-color: var(--accentwith10opacity);
+  border: 1px ridge var(--surface1with98opacity);
+  border-radius: 0.5rem;
+  padding-block: 0.4ch;
+  padding-inline: 1ch;
+}
+
+#cancel-connexion-dialog {
+  color: var(--surface1with98opacity);
+}
+
+dialog button[type="submit"] {
+  background-color: var(--accent);
+  color: var(--bg);
+  border: 1px solid var(--accent);
+}
+
+dialog button[type="submit"]:hover {
+  background-color: var(--bg);
+  color: var(--accent);
+  border: 1px solid var(--accent);
 }
 
 #connexion-btn-flexer {
   margin-top: calc(0.5*var(--rythme));
   display: flex;
+  align-items: center;
   gap: calc(0.25*var(--rythme));
+}
+
+#connexion-btn-flexer > *{
+  min-width: max-content;
 }
 
 /* SEARCH BAR */

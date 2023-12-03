@@ -5,10 +5,8 @@ const btnConnexion = () => {
 
   btn.addEventListener("click", () => {
     const btnCoordinates = btn.getBoundingClientRect();
-    dialog.style.position = "absolute";
-    dialog.style.top = `${btnCoordinates.bottom}px`; // Position below the button
-    dialog.style.right = `${btnCoordinates.right}px`;
-    dialog.showModal();
+    dialog.style.top = `${btnCoordinates.bottom}px`;
+    dialog.show();
   });
 
   const cancelBtn = dialog.querySelector("#cancel-connexion-dialog");
