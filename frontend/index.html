@@ -11,20 +11,20 @@
       <dialog id="connexion-dialog">
         <form method="dialog">
           <label for="connexion-username">Nom d'utilisateur</label>
-            <input type="text" name="username" id="connexion-username" autocomplete="off">
+            <input type="text" name="username" id="connexion-username" autocomplete="on">
             <label for="connexion-password">Mot de passe</label>
-            <input type="password" name="password" id="connexion-password" autocomplete="off">
+            <input type="password" name="password" id="connexion-password" autocomplete="on">
             <div id="connexion-btn-flexer">
             <button id="cancel-connexion-dialog" >Annuler</button>
-            <button type="submit">Me connecter</button>
+            <button id="connexion-submit" type="submit">Me connecter</button>
           </div>
         </form>
       </dialog>
         <header>
-          <ul id="header-flexer">
-            <li>My Bookshelf</li>
-            <button id="btn-connexion">Se connecter</button>
-          </ul>
+          <div id="header-flexer">
+            <span>My Bookshelf</span>
+            <button tabindex="0" id="btn-connexion">Se connecter</button>
+          </div>
         </header>
         
         <!--  I.1 je souhaite afficher le titre, l'auteur, la maison d'édition et la note moyenne goodreads de chaque livre via l'objet sanitarizedRows et l'objet bookcovers -->
@@ -88,7 +88,6 @@
                     <i class="ph-fill ph-star"></i>
                   </div>
                 </div>
-
               </fieldset>
             </div>
 

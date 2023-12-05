@@ -7,9 +7,17 @@ import { dirname, join } from 'node:path';//CAR EN MODULE IMPORT path et __dirna
 
 import { passBookDataToFront } from "./controllers/passBookDataToFront.js";
 
-import { loginAction, logoutAction } from "./actions/auth.js";
+import { loginAction } from "./actions/auth.js";
+
+import cors from '@fastify/cors'
 
 const app = fastify();
+
+// CORS
+await app.register(cors, { 
+    origin: '*',
+    methods: 'GET, POST'
+})
 
 // SERVE STATIC FILES
 const rootDir = (dirname(fileURLToPath(import.meta.url)));//car ESModules ne supporte pas pas path et __dirname
@@ -17,8 +25,6 @@ const rootDir = (dirname(fileURLToPath(import.meta.url)));//car ESModules ne sup
 // HOMEPAGE ROUTE
 app.get('/data', async (req, res) => {//it's the handler function
     try{
-        res.header('Access-Control-Allow-Origin', '*')//Permettre CORS car le frontend est sur un autre port. * = allow requesting code from any origin to access the resource
-
         const { sanitarizedRows, bookcovers } = await passBookDataToFront();
         const data = {
             sanitarizedRows : sanitarizedRows,
@@ -32,9 +38,8 @@ app.get('/data', async (req, res) => {//it's the handler function
 });
 
 // AUTHENTICATION
-app.get('/login', loginAction)
+app.post('/login', loginAction)
 
-app.post('/logout', logoutAction)
 
 // START SERVER
 const start = async () => {

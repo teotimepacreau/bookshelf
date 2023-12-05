@@ -27,11 +27,11 @@ async function loadingOrder() {
       
       const { default: filterFunction } = await import('./frontJS/filter.js');
 
-      const {default: btnConnexion } = await import ('./frontJS/btnConnexion.js')
+      const {default: login } = await import ('./frontJS/login.js')
   
       searchFunction();
       filterFunction();
-      btnConnexion();
+      login();
 
   } catch (error) {
     console.error(error);

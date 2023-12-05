@@ -1,4 +1,20 @@
-/* Box sizing rules */
+:root{
+  --rythme: 1rlh;
+  --bg: oklch(99% 0.005 200);
+  --accent: oklch(30% 0.2 200);
+  --accentwith10opacity:oklch(from var(--accent) l c h / 10%);
+  --surface1: oklch(50% 0.02 200);
+  --surface1with5opacity: oklch(from var(--surface1) l c h / 5%);
+  --surface1with10opacity: oklch(from var(--surface1) l c h / 10%);
+  --surface1with98opacity: oklch(from var(--surface1) l c h / 98%);
+  --red: oklch(40% 0.3 20);
+  --orange: oklch(90% 0.37 85 / 85%);
+  --yellow: oklch(87.82% 0.1933 115.55);
+  --green: oklch(40% 0.3 140);
+  --shadow: oklch(5% 0.02 200 / 20%)
+}
+
+/* CSS RESET */
 *,
 *::before,
 *::after {
@@ -49,8 +65,8 @@ h1, h2, h3, h4 {
 button { 
   line-height: 1rlh;
   cursor: pointer;
-  background-color: unset;
   transition: all 0.3s ease-out;
+  background-color: unset;
  }
 
 /* Make images easier to work with */
@@ -108,9 +124,17 @@ input[type="checkbox"] {
   height: calc(.6*var(--rythme)); /* Adjust the height */
 }
 
-button:focus-visible{
-  outline: none;
+#btn-connexion:focus-visible{
+  outline: 3px solid var(--accent);
+  outline-offset: 6px;
 } 
+
+dialog button:focus-visible{
+  box-shadow: none;
+  outline: 1px ridge var(--accent);
+  outline-offset: 4px;
+  border-radius: 0.5rem;
+}
 
 input[type = "search"] { 
   appearance: none; 
@@ -126,24 +150,9 @@ input[type = "search"] {
   box-shadow: none;
 }
 
-
-
-
-
-:root{
-    --rythme: 1rlh;
-    --bg: oklch(99% 0.005 200);
-    --accent: oklch(30% 0.2 200);
-    --accentwith10opacity:oklch(from var(--accent) l c h / 10%);
-    --surface1: oklch(50% 0.02 200);
-    --surface1with5opacity: oklch(from var(--surface1) l c h / 5%);
-    --surface1with10opacity: oklch(from var(--surface1) l c h / 10%);
-    --surface1with98opacity: oklch(from var(--surface1) l c h / 98%);
-    --shadow: oklch(5% 0.02 200 / 20%)
-}
-
 body {
   background-color: var(--bg);
+  position: relative;
 }
 
 #main-container {
@@ -199,12 +208,6 @@ dialog {
   transition: all 0.2s ease-out;
   opacity: 1;
 }
-
-/* dialog::backdrop{
-  backdrop-filter: blur(.04rem);
-  background: unset;
-  transition: all 0.2s ease-out;
-} */
 
 dialog > form {
   display: flex;
@@ -375,14 +378,58 @@ dialog button[type="submit"]:hover {
 
 .filters-visible {
   display: block!important;
-  animation: fade-in 0.2s ease-out;
+  animation: filters-fade-in 0.2s ease-out;
 }
 
-@keyframes fade-in {
+@keyframes filters-fade-in {
   from {
     opacity: 0;
     transform: scale(0.98);
   }to{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* NOTIF TO CONFIRM THAT USER HAS SUCCESSFULLY SENT FORM */
+
+.notif {
+  border: 1px ridge transparent;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5ch;
+  position: absolute;
+  right: var(--rythme);
+  top: calc(3*var(--rythme));
+  padding: calc(0.5*var(--rythme));
+  border-radius: 0.3rem;
+  animation: fade 0.4s ease-out;
+  box-shadow: 1px 1px 2px 0px var(--shadow);
+  transition: all 0.3s ease-out;
+  background-color: var(--bg);
+}
+
+.connected {
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.non-connected {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    translate: 100px;
+    transform: scale(0.1);
+    filter: brightness(1.5);
+  }
+  to {
     opacity: 1;
     transform: scale(1);
   }
