@@ -8,41 +8,45 @@
 </head>
 <body>
     <div id="homepage-container">
-      <dialog id="connexion-dialog">
-        <form method="dialog">
-          <label for="connexion-username">Nom d'utilisateur</label>
-            <input type="text" name="username" id="connexion-username" autocomplete="on">
-            <label for="connexion-password">Mot de passe</label>
-            <input type="password" name="password" id="connexion-password" autocomplete="on">
-            <div id="connexion-btn-flexer">
-            <button id="cancel-connexion-dialog" >Annuler</button>
-            <button id="connexion-submit" type="submit">Me connecter</button>
-          </div>
-        </form>
-      </dialog>
         <header>
+          
+    
           <div id="header-flexer">
             <span>My Bookshelf</span>
-            <button tabindex="0" id="btn-connexion">Se connecter</button>
+            <div id="button-and-dialog"> 
+              <button tabindex="0" id="btn-connexion">Se connecter</button>
+              <dialog id="connexion-dialog">
+                <form method="dialog">
+                  <label for="connexion-username">Nom d'utilisateur</label>
+                    <input type="text" name="username" id="connexion-username" autocomplete="on">
+                    <label for="connexion-password">Mot de passe</label>
+                    <input type="password" name="password" id="connexion-password" autocomplete="on">
+                    <div id="connexion-btn-flexer">
+                    <button id="cancel-connexion-dialog" >Annuler</button>
+                    <button id="connexion-submit" type="submit">Me connecter</button>
+                  </div>
+                </form>
+              </dialog>
+            </div> 
           </div>
         </header>
         
         <!--  I.1 je souhaite afficher le titre, l'auteur, la maison d'édition et la note moyenne goodreads de chaque livre via l'objet sanitarizedRows et l'objet bookcovers -->
         <main id="main-container">
           <aside>
-            <div id="search-bar-container"  tabindex="0" role="search">
+            <div id="search-bar-container">
               <div class="input-parent">
                 <label id="search-label" for="search-input">
                 </label>
-                <input id="search-input" placeholder="Rechercher" type="search" name="search-bar">
+                <input id="search-input" placeholder="Rechercher" type="search" name="search-bar" tabindex="0">
               </div>
               <button id="search-btn">
-                <i class="ph ph-magnifying-glass"></i>
+                <i class="ph-bold ph-magnifying-glass"></i>
               </button>
             </div>
 
             <div id="filter-container">
-              <button id="filter-button">Filtrer<i class="ph ph-caret-down"></i></button>
+              <button id="filter-button">Filtrer<i class="ph-bold ph-caret-down"></i></button>
               <fieldset id="all-filters">
                 <span>Par note</span>
                 <hr id="star-filter-rating-divider">

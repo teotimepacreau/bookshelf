@@ -1,17 +1,20 @@
 :root{
   --rythme: 1rlh;
-  --bg: oklch(99% 0.005 200);
+  --bg: #ffff;
   --accent: oklch(30% 0.2 200);
   --accentwith10opacity:oklch(from var(--accent) l c h / 10%);
   --surface1: oklch(50% 0.02 200);
+  --surface1with2opacity: oklch(from var(--surface1) l c h / 2%);
   --surface1with5opacity: oklch(from var(--surface1) l c h / 5%);
   --surface1with10opacity: oklch(from var(--surface1) l c h / 10%);
+  --surface1with50opacity: oklch(from var(--surface1) l c h / 50%);
+  --surface1with90opacity: oklch(from var(--surface1) l c h / 90%);
   --surface1with98opacity: oklch(from var(--surface1) l c h / 98%);
   --red: oklch(40% 0.3 20);
   --orange: oklch(90% 0.37 85 / 85%);
   --yellow: oklch(87.82% 0.1933 115.55);
   --green: oklch(40% 0.3 140);
-  --shadow: oklch(5% 0.02 200 / 20%)
+  --shadow: oklch(5% 0.02 200 / 15%)
 }
 
 /* CSS RESET */
@@ -141,8 +144,9 @@ input[type = "search"] {
   border: none; 
   outline: none; 
  }
- input[type="text"]:focus-visible,
- input[type="password"]:focus-visible {
+
+input[type="text"]:focus-visible,
+input[type="password"]:focus-visible {
   border: none;
   border-bottom: 1px solid var(--accent);
   background-color: var(--accentwith10opacity);
@@ -150,9 +154,22 @@ input[type = "search"] {
   box-shadow: none;
 }
 
+input[type="search"]:focus-visible{
+  background-color: var(--accentwith10opacity);
+  box-shadow: none;
+}
+
+#search-btn:focus-visible{
+  box-shadow: none;
+  outline-color: var(--accent);
+}
+
+#search-btn:active{
+  background-color: var(--accentwith10opacity);
+}
+
 body {
   background-color: var(--bg);
-  position: relative;
 }
 
 #main-container {
@@ -164,7 +181,6 @@ body {
 
 #homepage-container {
   padding: var(--rythme);
-  position: relative;
 }
 
 #library {
@@ -180,86 +196,7 @@ body {
 }
 
 
-#btn-connexion {
-  padding-block: calc(0.125*var(--rythme));
-  padding-inline: calc(0.5*var(--rythme));
-  border: 1px ridge transparent;
-  background-color: var(--surface1with10opacity);
-  border-radius: 0.3rem;
-  box-shadow: 0.5px 0.5px 1px 0px var(--shadow);
-  transition: all 0.2s ease;
-  line-height: 1rlh;
-}
 
-#btn-connexion:hover {
-  background-color: var(--surface1with10opacity);
-  border: 1px ridge var(--surface1);
-}
-
-dialog {
-  transform: translateY(5%);
-  left: 83dvw;
-  z-index: 999;
-  position: absolute;
-  padding: calc(0.5*var(--rythme));
-  border: 1px solid transparent;
-  border-radius: 0.3rem;
-  box-shadow: 1px 1px 3px 0px var(--shadow);
-  transition: all 0.2s ease-out;
-  opacity: 1;
-}
-
-dialog > form {
-  display: flex;
-  flex-direction: column;
-  gap: calc(0.25*var(--rythme));
-}
-
-dialog input {
-  appearance: none;
-  border: none;
-  padding-block: 0.3ch;
-  padding-inline: 0.8ch;
-  border-bottom: 1px solid var(--surface1);
-  background-color: var(--surface1with5opacity);
-  border-radius: .2rem .2rem 0 0;
-  transition: all 0.2s ease-out;
-}
-
-dialog button{
-  background-color: var(--accentwith10opacity);
-  border: 1px ridge var(--surface1with98opacity);
-  border-radius: 0.5rem;
-  padding-block: 0.4ch;
-  padding-inline: 1ch;
-}
-
-#cancel-connexion-dialog {
-  color: var(--surface1with98opacity);
-}
-
-dialog button[type="submit"] {
-  background-color: var(--accent);
-  color: var(--bg);
-  border: 1px solid var(--accent);
-}
-
-dialog button[type="submit"]:hover {
-  background-color: var(--bg);
-  color: var(--accent);
-  border: 1px solid var(--accent);
-}
-
-#connexion-btn-flexer {
-  margin-top: calc(0.5*var(--rythme));
-  display: flex;
-  align-items: center;
-  gap: calc(0.25*var(--rythme));
-}
-
-#connexion-btn-flexer > *{
-  min-width: max-content;
-}
 
 /* SEARCH BAR */
 #search-bar-container {
@@ -267,7 +204,7 @@ dialog button[type="submit"]:hover {
   justify-content: flex-end;
   align-items: center;
   margin-top: var(--rythme);
-  outline: 1px solid var(--surface1);
+  outline: 1px solid var(--surface1with50opacity);
   border-radius: 0.2rem;
 }
 
@@ -277,21 +214,22 @@ dialog button[type="submit"]:hover {
 
 #search-input {
   width: 100%;
-  padding-inline: calc(0.3*var(--rythme));
+  padding-inline: calc(0.6*var(--rythme));
+  padding-block: calc(0.4*var(--rythme));
+  font-weight: 500;
 }
 
 #search-btn {
   flex-grow: 0;
   border: none;
-  padding-inline: calc(.4*var(--rythme));
   transition: all 0.2s ease-out;
-  padding-block: calc(0.1*var(--rythme));
+  padding: calc(0.4*var(--rythme));
 
 }
 
 #search-btn i {
   background-color: var(--surface1with5opacity);
-  padding: calc(0.2*var(--rythme));
+  padding: calc(0.4*var(--rythme));
   border-radius: 50%;
 }
 
@@ -320,14 +258,18 @@ dialog button[type="submit"]:hover {
   outline: 1px solid var(--surface1);
   border-radius: 0.2rem;
   border: none;
-  padding-inline: calc(0.3*var(--rythme));
-  padding-block: calc(0.1*var(--rythme));
+  outline: 1px solid var(--surface1with50opacity);
+  color: var(--surface1with90opacity);
+  padding-inline: calc(0.6*var(--rythme));
+  padding-block: calc(0.4*var(--rythme));
+  font-weight: 500;
 }
 
 #filter-button i {
   background-color: var(--surface1with5opacity);
   padding: calc(0.2*var(--rythme));
   border-radius: 50%;
+  color: black;
   transition: all 0.3s ease-out;
 }
 
@@ -342,9 +284,10 @@ dialog button[type="submit"]:hover {
   position: absolute;
   padding: calc(0.5*var(--rythme));
   border: none;
-  background-color: var(--surface1with5opacity); 
+  background-color: var(--surface1with2opacity); 
   border-radius: 0.2rem;
   border: none;
+  box-shadow: 1px 1px 2px 0px var(--shadow) ;
  }
 
 #star-filter-rating-divider{
@@ -391,6 +334,94 @@ dialog button[type="submit"]:hover {
   }
 }
 
+/* CONNEXION */
+#btn-connexion {
+  padding-block: calc(0.4*var(--rythme));
+  padding-inline: calc(0.8*var(--rythme));
+  font-weight: 500;
+  border: 1px ridge transparent;
+  background-color: var(--surface1with10opacity);
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 1px 0px var(--shadow);
+  transition: all 0.2s ease;
+  line-height: 1rlh;
+}
+
+#btn-connexion:hover {
+  background-color: var(--surface1with10opacity);
+  border: 1px ridge var(--surface1);
+}
+
+#bouton-and-dialog {
+  position: relative;
+}
+
+dialog {
+  transform: translateY(5%);
+  z-index: 999;
+  position: absolute;
+  left: unset;/*RESOUD LA NON POSSIBILITE DE POSITION ABSOLUTE RIGHT*/
+  right: var(--rythme);
+  padding: calc(0.5*var(--rythme));
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  box-shadow: 1px 1px 3px 0px var(--shadow);
+  transition: all 0.2s ease-out;
+  opacity: 1;
+}
+
+dialog > form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.25*var(--rythme));
+}
+
+dialog input {
+  appearance: none;
+  border: none;
+  padding-block: 0.3ch;
+  padding-inline: 0.8ch;
+  border-bottom: 1px solid var(--surface1);
+  background-color: var(--surface1with5opacity);
+  border-radius: .2rem .2rem 0 0;
+  transition: all 0.2s ease-out;
+}
+
+dialog button{
+  background-color: var(--accentwith10opacity);
+  border: 1px ridge var(--surface1with98opacity);
+  border-radius: 0.5rem;
+  padding-block: calc(0.3*var(--rythme));
+  padding-inline: calc(0.6*var(--rythme));
+}
+
+#cancel-connexion-dialog {
+  color: var(--surface1with98opacity);
+}
+
+dialog button[type="submit"] {
+  background-color: var(--accent);
+  color: var(--bg);
+  border: 1px solid var(--accent);
+}
+
+dialog button[type="submit"]:hover {
+  background-color: var(--bg);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+#connexion-btn-flexer {
+  margin-top: calc(0.5*var(--rythme));
+  display: flex;
+  align-items: center;
+  gap: calc(0.5*var(--rythme));
+}
+
+#connexion-btn-flexer > *{
+  min-width: max-content;
+}
+
 /* NOTIF TO CONFIRM THAT USER HAS SUCCESSFULLY SENT FORM */
 
 .notif {
@@ -401,11 +432,11 @@ dialog button[type="submit"]:hover {
   gap: 0.5ch;
   position: absolute;
   right: var(--rythme);
-  top: calc(3*var(--rythme));
+  top: calc(4*var(--rythme));
   padding: calc(0.5*var(--rythme));
   border-radius: 0.3rem;
   animation: fade 0.4s ease-out;
-  box-shadow: 1px 1px 2px 0px var(--shadow);
+  box-shadow: 1px 1px 2px 1px var(--shadow);
   transition: all 0.3s ease-out;
   background-color: var(--bg);
 }
