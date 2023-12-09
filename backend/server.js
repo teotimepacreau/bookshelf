@@ -9,7 +9,7 @@ import { dirname, join } from 'node:path';//CAR EN MODULE IMPORT path et __dirna
 
 import { passBookDataToFront } from "./controllers/passBookDataToFront.js";
 
-import { loginAction } from "./actions/auth.js";
+import { loginAction, logoutAction } from "./actions/auth.js";
 
 import cors from '@fastify/cors'
 
@@ -53,6 +53,7 @@ app.get('/data', async (req, res) => {//it's the handler function
 
 // AUTHENTICATION
 app.post('/login', loginAction)
+app.get('/logout', logoutAction)
 
 // START SERVER
 const start = async () => {

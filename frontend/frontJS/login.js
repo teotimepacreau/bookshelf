@@ -40,17 +40,23 @@ const login = async () => {
         if(resultOk.auth === true){
           //send visual notif confirmation
           const notifConnecté = document.createElement('div')
+          notifConnecté.id = "connected-flexer"
           notifConnecté.innerHTML = `
-          <i class="ph ph-check-circle"></i>
-          <span>Connecté !</span>
+          <div id="connected-first-line">
+            <i class="ph ph-check-circle"></i>
+            <span>Connecté !</span>
+          </div>
+          <button id="logout-btn">Logout<i class="ph ph-sign-out"></i></button>
           `
           notifConnecté.classList.add('notif', 'connected')
           notifConnecté.setAttribute("role", "alert")
           const container = document.querySelector('#homepage-container')
           container.appendChild(notifConnecté)
-          setTimeout(()=>{
-              container.removeChild(notifConnecté)
-          }, 5000)
+
+          const logoutBtn = document.querySelector('#logout-btn')
+          logoutBtn.addEventListener('click', async ()=> {
+          await fetch('http://localhost:3000/logout')
+          })
         }else{
           const notifConnexionImpossible = document.createElement('div')
           notifConnexionImpossible.innerHTML = `

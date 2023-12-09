@@ -50,6 +50,7 @@ export const loginAction = async (req, res) => {
                         req.session.set('user', {
                                 username: user.username
                         })
+
                         // envoie au frontend
                         res.send({auth: true})
                 }else{  
@@ -62,3 +63,12 @@ export const loginAction = async (req, res) => {
         }
 }
 
+export const logoutAction = async (req, res) => {
+        try{
+                req.session.set('value', null);
+                await req.session.delete()
+                res.send({ message: 'Logout successful' });
+        }catch(error){
+                console.error(error)
+        }
+}

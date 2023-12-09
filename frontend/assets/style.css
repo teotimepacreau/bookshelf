@@ -181,6 +181,7 @@ body {
 
 #homepage-container {
   padding: var(--rythme);
+  position: relative;
 }
 
 #library {
@@ -433,17 +434,50 @@ dialog button[type="submit"]:hover {
   position: absolute;
   right: var(--rythme);
   top: calc(4*var(--rythme));
-  padding: calc(0.5*var(--rythme));
+  padding-inline: calc(0.4*var(--rythme));
+  padding-block: calc(0.2*var(--rythme));
   border-radius: 0.3rem;
   animation: fade 0.4s ease-out;
-  box-shadow: 1px 1px 2px 1px var(--shadow);
+  box-shadow: 1px 1px 2px 0px var(--shadow);
   transition: all 0.3s ease-out;
   background-color: var(--bg);
 }
 
+#connected-flexer {
+  display: flex;
+  align-items: baseline;
+  gap: 1.3ch;
+  line-height: 1rlh;
+}
+
 .connected {
+  position: fixed;
+  top: unset;
+  bottom: var(--rythme);
+  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   color: var(--green);
   border-color: var(--green);
+  width: max-content;
+}
+
+#logout-btn {
+  border: none;
+  opacity: 0.5;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5ch;
+}
+
+#connected-second-line {
+  display: flex;
+  gap: 0.5ch;
+  align-items: baseline;
+}
+
+#connected-second-line i {
+  text-decoration: none;
 }
 
 .non-connected {
