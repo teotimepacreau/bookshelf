@@ -28,10 +28,11 @@ const login = async () => {
     try{
         response = await fetch('http://localhost:3000/login', {
           method: 'POST',
+          credentials: "include", // OBLIGATOIRE POUR PERMETTRE DINCLURE LES COOKIES A LA REQUETE
           headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       })
       const result = response.json()
       result.then(resultOk=>{

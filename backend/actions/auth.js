@@ -6,15 +6,16 @@ import { dirname, join } from "node:path"; //CAR EN ESModules  path et __dirname
 const dbPath = dirname(dirname(fileURLToPath(import.meta.url)));
 const dbFile = join(dbPath, "goodreads.db");
 
+
+
 export const loginAction = async (req, res) => {
         try{
-                const username = req.body.username
-                const password = req.body.password
-                console.log(username, password)
-
+                const user = {
+                        username: req.body.username,
+                        password: req.body.password
+                }
                 // hash le mdp de l'utilisateur
-                const passHash = await bcrypt.hash(password, 1)
-                console.log('passHash:', passHash)
+                const passHash = await bcrypt.hash(user.password, 1)
 
                 let db = await open({//db connexion
                         filename: dbFile,
@@ -42,11 +43,14 @@ export const loginAction = async (req, res) => {
                 // }
 
                 // requête SQL pour retourner en objet la row correspondant au username
-                const searchForUser = await db.all("SELECT * FROM auth WHERE username = ?", username)
-                console.log('searchForUser', searchForUser)
+                const searchForUser = await db.all("SELECT * FROM auth WHERE username = ?", user.username)
 
                 //  bcrypt compare si le mdp hashé de la BDD correspond au mdp hashé au mdp hashé de l'utilisateur
-                if(await bcrypt.compare(password, searchForUser[0].password)){
+                if(await bcrypt.compare(user.password, searchForUser[0].password)){
+                        req.session.set('user', {
+                                username: user.username
+                        })
+                        console.log('Session set:', req.session.get('user'));
                         // envoie au frontend
                         res.send({auth: true})
                 }else{  
