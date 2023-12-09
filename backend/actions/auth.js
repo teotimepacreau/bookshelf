@@ -50,7 +50,6 @@ export const loginAction = async (req, res) => {
                         req.session.set('user', {
                                 username: user.username
                         })
-                        console.log('Session set:', req.session.get('user'));
                         // envoie au frontend
                         res.send({auth: true})
                 }else{  

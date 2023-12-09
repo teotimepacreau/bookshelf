@@ -28,7 +28,7 @@ const login = async () => {
     try{
         response = await fetch('http://localhost:3000/login', {
           method: 'POST',
-          credentials: "include", // OBLIGATOIRE POUR PERMETTRE DINCLURE LES COOKIES A LA REQUETE
+          credentials: "include", // OBLIGATOIRE POUR PERMETTRE DINCLURE LES COOKIES A LA REQUETE, SI ABSENT LES COOKIES NE SERONT PAS ENVOYES
           headers: {
             'Content-Type': 'application/json'
         },
