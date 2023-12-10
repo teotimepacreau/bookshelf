@@ -3,7 +3,7 @@ const filterFunction = () => {
   // FILTER ANIMATION
   const filterBtn = document.querySelector("#filter-button");
 
-  const filtersContainer = document.querySelector("#all-filters");
+  const filtersContainer = document.querySelector("#all-filters-container");
 
   filterBtn.addEventListener("click", (e) => {
     filtersContainer.classList.toggle("filters-visible");

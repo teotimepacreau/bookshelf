@@ -20,4 +20,6 @@
 8. Login function : <dialog> element contains the connexion form. username and password are passed to the backend endpoint "/login" [login.js](./frontend/frontJS/login.js)
 
 ### Backend step 2
-9. Login function : Retrieving username and password. Hashing the password throught bcrypt. Then SQL query to get the corresponding username row in DB (table auth). Bcrypt compares if the in DB hashed password matched the hashed password passed by the connexion form. If match : it returns "auth:true" to frontend. If don't match : it returns "auth:false" to backend. 
+9. Login through authentification : Retrieving username and password. Hashing the password throught bcrypt. Then SQL query to get the corresponding username row in DB (table auth). Bcrypt compares if the in DB hashed password matched the hashed password passed by the connexion form. If match : it it uses the fastify-secure-session plugin that adds a **session cookie**. A request to this session cookie allows to ensure if the user is authenticated. It then passes to frontend the confirmation that user is authenticated.
+
+10. Authorization : 

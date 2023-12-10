@@ -276,9 +276,11 @@ body {
 #filter-button i:hover {
   background-color: var(--surface1with10opacity);
 }
-
+#all-filters-container {
+  visibility: hidden;
+  position: relative;
+}
 #all-filters{
-  display: none;
   margin-top: calc(0.25*var(--rythme));
   width: 100%;
   position: absolute;
@@ -320,8 +322,9 @@ body {
 }
 
 .filters-visible {
-  display: block!important;
-  animation: filters-fade-in 0.2s ease-out;
+  z-index: 999 !important;
+  visibility: visible !important;
+  animation: filters-fade-in 0.2s ease-out !important;
 }
 
 @keyframes filters-fade-in {

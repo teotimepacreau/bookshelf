@@ -55,6 +55,27 @@ app.get('/data', async (req, res) => {//it's the handler function
 app.post('/login', loginAction)
 app.get('/logout', logoutAction)
 
+// AUTHORIZATION
+const isAuthenticated = async (req, res, next) => {
+    // Check if the user is authenticated (you can customize this based on your authentication mechanism)
+    if (req.session.user) {
+      next(); // User is authenticated, proceed to the next middleware
+    } else {
+      res.status(401).json({ error: 'Unauthorized because user is not authenticated' }); 
+    }
+  };
+  
+// Route with middleware
+app.route({
+    method: 'POST',
+    url: '/add-book',
+    preHandler: isAuthenticated, // Apply the middleware here
+    handler: async (req, res) => {
+      // Route handler logic
+      res.send({ message: 'Hello from the route handler!' });
+    },
+});
+
 // START SERVER
 const start = async () => {
     try{

@@ -17,13 +17,13 @@
               <button tabindex="0" id="btn-connexion">Se connecter</button>
               <dialog id="connexion-dialog">
                 <form method="dialog">
-                  <label for="connexion-username">Nom d'utilisateur</label>
+                    <label for="connexion-username">Nom d'utilisateur</label>
                     <input type="text" name="username" id="connexion-username" autocomplete="on">
                     <label for="connexion-password">Mot de passe</label>
                     <input type="password" name="password" id="connexion-password" autocomplete="on">
                     <div id="connexion-btn-flexer">
-                    <button id="cancel-connexion-dialog" >Annuler</button>
-                    <button id="connexion-submit" type="submit">Me connecter</button>
+                      <button id="cancel-connexion-dialog" >Annuler</button>
+                      <button id="connexion-submit" type="submit">Me connecter</button>
                   </div>
                 </form>
               </dialog>
@@ -44,56 +44,57 @@
                 <i class="ph-bold ph-magnifying-glass"></i>
               </button>
             </div>
-
             <div id="filter-container">
               <button id="filter-button">Filtrer<i class="ph-bold ph-caret-down"></i></button>
-              <fieldset id="all-filters">
-                <span>Par note</span>
-                <hr id="star-filter-rating-divider">
-                <div class="star-checkboxes">
-                  <input type="radio" name="book-rating" id="zero-star" value="0">
-                  <div class="star-group">
-                    <label for="zero-star">0</label>
-                    <i class="ph-fill ph-star"></i>
-                  </div>
-                </div>
-                <div class="star-checkboxes">
-                  <input type="radio" name="book-rating" id="one-star" value="1">
-                  <div class="star-group">
-                    <label for="one-star">1</label>
-                    <i class="ph-fill ph-star"></i>
-                  </div>
-                </div>
-                <div class="star-checkboxes">
-                  <input type="radio" name="book-rating" id="two-stars" value="2">
-                  <div class="star-group">
-                    <label for="two-stars">2</label>
-                    <i class="ph-fill ph-star"></i>
-                  </div>
-                </div>
-                <div class="star-checkboxes">
-                  <input type="radio" name="book-rating" id="three-stars" value="3">
-                  <div class="star-group">
-                    <label for="three-stars">3</label>
-                    <i class="ph-fill ph-star"></i>
-                  </div>
-                </div>
-                <div class="star-checkboxes">
-                  <input type="radio" name="book-rating" id="four-stars" value="4">
-                  <div class="star-group">
-                    <label for="four-stars">4</label>
-                    <i class="ph-fill ph-star"></i>
-                  </div>
-                </div>
-                <div class="star-checkboxes">
-                  <input type="radio" name="book-rating" id="five-stars" value="5">
-                  <div class="star-group">
-                    <label for="five-stars">5</label>
-                    <i class="ph-fill ph-star"></i>
-                  </div>
-                </div>
-              </fieldset>
             </div>
+          <div id="all-filters-container">
+            <fieldset id="all-filters">
+              <span>Par note</span>
+              <hr id="star-filter-rating-divider">
+              <div class="star-checkboxes">
+                <input type="radio" name="book-rating" id="zero-star" value="0">
+                <div class="star-group">
+                  <label for="zero-star">0</label>
+                  <i class="ph-fill ph-star"></i>
+                </div>
+              </div>
+              <div class="star-checkboxes">
+                <input type="radio" name="book-rating" id="one-star" value="1">
+                <div class="star-group">
+                  <label for="one-star">1</label>
+                  <i class="ph-fill ph-star"></i>
+                </div>
+              </div>
+              <div class="star-checkboxes">
+                <input type="radio" name="book-rating" id="two-stars" value="2">
+                <div class="star-group">
+                  <label for="two-stars">2</label>
+                  <i class="ph-fill ph-star"></i>
+                </div>
+              </div>
+              <div class="star-checkboxes">
+                <input type="radio" name="book-rating" id="three-stars" value="3">
+                <div class="star-group">
+                  <label for="three-stars">3</label>
+                  <i class="ph-fill ph-star"></i>
+                </div>
+              </div>
+              <div class="star-checkboxes">
+                <input type="radio" name="book-rating" id="four-stars" value="4">
+                <div class="star-group">
+                  <label for="four-stars">4</label>
+                  <i class="ph-fill ph-star"></i>
+                </div>
+              </div>
+              <div class="star-checkboxes">
+                <input type="radio" name="book-rating" id="five-stars" value="5">
+                <div class="star-group">
+                  <label for="five-stars">5</label>
+                  <i class="ph-fill ph-star"></i>
+                </div>
+              </div>
+            </fieldset>
+          </div>
 
           </aside>
           <section id="library" data-container-for-all-cards>              

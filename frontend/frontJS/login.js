@@ -34,9 +34,9 @@ const login = async () => {
         },
         body: JSON.stringify(data),
       })
-      const result = response.json()
-      result.then(resultOk=>{
-        if(resultOk.user){
+      const loginReceived = response.json()
+      loginReceived.then(loginReceivedJSObject=>{
+        if(loginReceivedJSObject.user){
           //CONNECTED NOTIF
           const notifConnecté = document.createElement('div')
           notifConnecté.id = "connected-flexer"
@@ -55,6 +55,9 @@ const login = async () => {
 
           // ADD BOOK
           const aside = document.querySelector('aside')
+          const addingBooksContainer = document.createElement('div')
+          addingBooksContainer.id = "addings-books-container"
+          aside.appendChild(addingBooksContainer)
           const addBookBtn = document.createElement('button')
           addBookBtn.innerHTML = 
           `
@@ -62,7 +65,26 @@ const login = async () => {
           <i class="ph-bold ph-plus-square"></i>
           `
           addBookBtn.id = "btn-add-book"
-          aside.appendChild(addBookBtn)
+          addingBooksContainer.append(addBookBtn)
+          addBookBtn.addEventListener('click', ()=> {
+          const addingBooksFields = document.createElement('div')
+          addingBooksFields.id = "addings-books-container"
+          addingBooksFields.innerHTML = 
+            `
+            <form action="/add-book" method="POST">
+              <div id="flexer-adding-books-fields"
+              <label for="titre-livre">Titre</label>
+              <input type="text" name="titre" id="titre-livre" autocomplete="on">
+              <label for="auteur-livre">Auteur</label>
+              <input type="text" name="auteur" id="auteur-livre" autocomplete="on">
+              <div id="add-book-flexer">
+                <button id="cancel-add-book">Annuler</button>
+                <button id="add-book" type="submit">Ajouter le livre</button>
+              </div>
+            </form>
+            `
+            addingBooksContainer.append(addingBooksFields)
+          })
 
           // LOGOUT
           const logoutBtn = document.querySelector('#logout-btn')
