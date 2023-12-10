@@ -196,15 +196,16 @@ body {
   justify-content: space-between;
 }
 
-
-
+/* ASIDE */
+  aside > * {
+    margin-top: var(--rythme);
+  }
 
 /* SEARCH BAR */
 #search-bar-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-top: var(--rythme);
   outline: 1px solid var(--surface1with50opacity);
   border-radius: 0.2rem;
 }
@@ -224,13 +225,12 @@ body {
   flex-grow: 0;
   border: none;
   transition: all 0.2s ease-out;
-  padding: calc(0.4*var(--rythme));
-
+  padding: calc(0.6*var(--rythme));
 }
 
 #search-btn i {
   background-color: var(--surface1with5opacity);
-  padding: calc(0.4*var(--rythme));
+  padding: calc(0.3*var(--rythme));
   border-radius: 50%;
 }
 
@@ -247,7 +247,6 @@ body {
   transform: rotate(180deg);
 }
 #filter-container {
-  margin-top: var(--rythme);
   position: relative;
 }
 #filter-button {
@@ -268,7 +267,7 @@ body {
 
 #filter-button i {
   background-color: var(--surface1with5opacity);
-  padding: calc(0.2*var(--rythme));
+  padding: calc(0.3*var(--rythme));
   border-radius: 50%;
   color: black;
   transition: all 0.3s ease-out;
@@ -333,6 +332,29 @@ body {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+/* ADD BOOK BTN */
+#btn-add-book {
+  padding-inline: calc(0.6*var(--rythme));
+  padding-block: calc(0.4*var(--rythme));
+  border-radius: 0.2rem;
+  border: none;
+  outline: 1px solid var(--surface1with50opacity);
+  width: 100%;
+  background-color: var(--accentwith10opacity);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+}
+
+#btn-add-book i {
+  background-color: var(--surface1with90opacity);
+    padding: calc(0.3*var(--rythme));
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease-out;
 }
 
 /* CONNEXION */

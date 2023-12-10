@@ -36,12 +36,12 @@ const login = async () => {
       })
       const result = response.json()
       result.then(resultOk=>{
-        console.log(resultOk)
-        if(resultOk.auth === true){
-          //send visual notif confirmation
+        if(resultOk.user){
+          //CONNECTED NOTIF
           const notifConnecté = document.createElement('div')
           notifConnecté.id = "connected-flexer"
-          notifConnecté.innerHTML = `
+          notifConnecté.innerHTML = 
+          `
           <div id="connected-first-line">
             <i class="ph ph-check-circle"></i>
             <span>Connecté !</span>
@@ -53,9 +53,32 @@ const login = async () => {
           const container = document.querySelector('#homepage-container')
           container.appendChild(notifConnecté)
 
+          // ADD BOOK
+          const aside = document.querySelector('aside')
+          const addBookBtn = document.createElement('button')
+          addBookBtn.innerHTML = 
+          `
+          Ajouter un livre
+          <i class="ph-bold ph-plus-square"></i>
+          `
+          addBookBtn.id = "btn-add-book"
+          aside.appendChild(addBookBtn)
+
+          // LOGOUT
           const logoutBtn = document.querySelector('#logout-btn')
           logoutBtn.addEventListener('click', async ()=> {
-          await fetch('http://localhost:3000/logout')
+            try{
+              let logoutResponse = await fetch('http://localhost:3000/logout')
+              console.log(logoutResponse)
+              if(logoutResponse.status === 200){
+                logoutBtn.parentElement.style.display = "none"
+                addBookBtn.style.display = "none"
+              }else{
+                console.error('logout not achieved')
+              }
+            }catch(error){
+              console.error(error)
+            }
           })
         }else{
           const notifConnexionImpossible = document.createElement('div')

@@ -47,27 +47,25 @@ export const loginAction = async (req, res) => {
 
                 //  bcrypt compare si le mdp hashé de la BDD correspond au mdp hashé au mdp hashé de l'utilisateur
                 if(await bcrypt.compare(user.password, searchForUser[0].password)){
-                        req.session.set('user', {
-                                username: user.username
+                        await req.session.set('user', {
+                                username: user.username,
                         })
-
-                        // envoie au frontend
-                        res.send({auth: true})
+                        res.send({ user: req.session.get('user')});
                 }else{  
                         // envoie au frontend
-                        res.send({auth: false})
+                        res.send({ user: false})
                 }
         }catch(error){
                 console.error(error)
-                res.send({auth: false})
+                res.send({user: false})
         }
 }
 
 export const logoutAction = async (req, res) => {
         try{
-                req.session.set('value', null);
                 await req.session.delete()
-                res.send({ message: 'Logout successful' });
+                console.log(req.session)
+                res.status(200).clearCookie('session', { path: '/' }).send({ message: 'Logout successful' });
         }catch(error){
                 console.error(error)
         }
