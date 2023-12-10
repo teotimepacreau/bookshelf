@@ -197,6 +197,7 @@ body {
 }
 
 /* ASIDE */
+
   aside > * {
     margin-top: var(--rythme);
   }
@@ -216,8 +217,7 @@ body {
 
 #search-input {
   width: 100%;
-  padding-inline: calc(0.6*var(--rythme));
-  padding-block: calc(0.4*var(--rythme));
+  padding: calc(0.6*var(--rythme));
   font-weight: 500;
 }
 
@@ -278,19 +278,15 @@ body {
 }
 #all-filters-container {
   visibility: hidden;
-  position: relative;
-}
-#all-filters{
   margin-top: calc(0.25*var(--rythme));
   width: 100%;
-  position: absolute;
   padding: calc(0.5*var(--rythme));
   border: none;
-  background-color: var(--surface1with2opacity); 
+  background-color: var(--surface1with10opacity); 
   border-radius: 0.2rem;
   border: none;
-  box-shadow: 1px 1px 2px 0px var(--shadow) ;
- }
+  box-shadow: 1px 1px 2px 0.1px var(--shadow) ;
+}
 
 #star-filter-rating-divider{
   margin-block: calc(0.25*var(--rythme));
@@ -337,7 +333,7 @@ body {
   }
 }
 
-/* ADD BOOK BTN */
+/* ADD BOOKS */
 #btn-add-book {
   padding-inline: calc(0.6*var(--rythme));
   padding-block: calc(0.4*var(--rythme));
@@ -358,6 +354,53 @@ body {
     border-radius: 50%;
     color: white;
     transition: all 0.3s ease-out;
+}
+
+#flexer-adding-books-fields {
+  width: 100%;
+  margin-top: calc(0.25*var(--rythme));
+  display: flex;
+  flex-direction: column;
+  padding: calc(0.5*var(--rythme));
+  border: none;
+  background-color: var(--accentwith10opacity); 
+  border-radius: 0.2rem;
+  border: none;
+  box-shadow: 1px 1px 2px 0.1px var(--shadow) ;
+  gap: calc(0.25*var(--rythme));
+}
+
+#flexer-adding-books-fields input {
+  appearance: none;
+  border: none;
+  padding-block: 0.3ch;
+  padding-inline: 0.8ch;
+  border-bottom: 1px solid var(--surface1);
+  background-color: var(--bg);
+  border-radius: .2rem .2rem 0 0;
+  transition: all 0.2s ease-out;
+}
+
+#add-book-flexer {
+  margin-top: calc(0.5*var(--rythme));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: calc(0.5*var(--rythme));
+}
+
+#add-book-flexer button {
+  background-color: var(--accent);
+  color: var(--bg);
+  border: 1px ridge var(--accent);
+  border-radius: 0.5rem;
+  padding-block: calc(0.2*var(--rythme));
+  padding-inline: calc(0.4*var(--rythme));
+}
+
+#add-book-flexer button:first-child{
+  background-color: transparent;
+  color: var(--accent);
 }
 
 /* CONNEXION */

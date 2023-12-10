@@ -95,6 +95,7 @@ const login = async () => {
               if(logoutResponse.status === 200){
                 logoutBtn.parentElement.style.display = "none"
                 addBookBtn.style.display = "none"
+                addingBooksContainer.style.display = "none"
               }else{
                 console.error('logout not achieved')
               }
