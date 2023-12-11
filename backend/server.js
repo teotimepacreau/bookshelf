@@ -13,6 +13,8 @@ import { loginAction, logoutAction } from "./actions/auth.js";
 
 import cors from '@fastify/cors'
 
+import fastifyFormBody from "@fastify/formbody"
+
 const app = fastify();
 
 // SERVE STATIC FILES
@@ -25,6 +27,7 @@ await app.register(cors, {
     credentials: true, // Allow credentials (cookies)
 })
 
+// COOKIES
 app.register(fastifyCookie)
 
 // SECURE SESSION permet de créer un cookie signé sur le poste de l'utilisateur. Sécurisé car l'utilisateur ne pourra pas modifier le cookie, en effet seul notre serveur sera capable de générer un tel cookie.
@@ -35,6 +38,9 @@ app.register(fastifySecureSession, {
         path: '/',
     }
 })
+
+// PERMETTRE LES SOUSMISSIONS PAR DEFAUT DE FORM
+app.register(fastifyFormBody)
 
 // HOMEPAGE ROUTE
 app.get('/data', async (req, res) => {//it's the handler function
@@ -65,14 +71,23 @@ const isAuthenticated = async (req, res, next) => {
     }
   };
   
-// Route with middleware
+// ADD BOOj route and pre-handler for verifying that user is authenticated before handling the req
 app.route({
     method: 'POST',
     url: '/add-book',
     preHandler: isAuthenticated, // Apply the middleware here
     handler: async (req, res) => {
-      // Route handler logic
-      res.send({ message: 'Hello from the route handler!' });
+      try{
+        const book = {
+            bookTitle: req.body.titre,
+            bookAuthor: req.body.auteur,
+            bookCoverImg: req.body.couverture
+        }
+        console.log(book)
+      }catch(error){
+        console.error(error)
+      }
+      
     },
 });
 

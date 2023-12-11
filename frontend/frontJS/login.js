@@ -71,7 +71,7 @@ const login = async () => {
           addingBooksFields.id = "addings-books-container"
           addingBooksFields.innerHTML = 
             `
-            <form action="/add-book" method="post">
+            <form action="http://localhost:3000/add-book" method="post">
               <div id="flexer-adding-books-fields"
               <label for="titre-livre">Titre</label>
               <input type="text" name="titre" id="titre-livre" autocomplete="on">
