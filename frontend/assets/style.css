@@ -127,6 +127,21 @@ input[type="checkbox"] {
   height: calc(.6*var(--rythme)); /* Adjust the height */
 }
 
+input[type = "search"] { 
+  appearance: none; 
+  border: none; 
+  outline: none; 
+ }
+
+input[type="file"]{
+  appearance: none;
+  border: none;
+  background-color: var(--bg);
+  border-radius: 0.2rem 0.2rem 0 0;
+  transition: all 0.2s ease-out;
+}
+
+
 #btn-connexion:focus-visible{
   outline: 3px solid var(--accent);
   outline-offset: 6px;
@@ -139,11 +154,7 @@ dialog button:focus-visible{
   border-radius: 0.5rem;
 }
 
-input[type = "search"] { 
-  appearance: none; 
-  border: none; 
-  outline: none; 
- }
+
 
 input[type="text"]:focus-visible,
 input[type="password"]:focus-visible {
@@ -370,7 +381,7 @@ body {
   gap: calc(0.25*var(--rythme));
 }
 
-#flexer-adding-books-fields input {
+#flexer-adding-books-fields input:not([type="file"]) {
   appearance: none;
   border: none;
   padding-block: 0.3ch;
@@ -386,6 +397,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   gap: calc(0.5*var(--rythme));
 }
 

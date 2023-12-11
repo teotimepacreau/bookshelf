@@ -71,12 +71,14 @@ const login = async () => {
           addingBooksFields.id = "addings-books-container"
           addingBooksFields.innerHTML = 
             `
-            <form action="/add-book" method="POST">
+            <form action="/add-book" method="post">
               <div id="flexer-adding-books-fields"
               <label for="titre-livre">Titre</label>
               <input type="text" name="titre" id="titre-livre" autocomplete="on">
               <label for="auteur-livre">Auteur</label>
               <input type="text" name="auteur" id="auteur-livre" autocomplete="on">
+              <label for="image-couverture">Ajouter l'image de couverture</label>
+              <input type="file" name="couverture" id="image-couverture" accept="image/png, image/jpeg, image/jpg">
               <div id="add-book-flexer">
                 <button id="cancel-add-book">Annuler</button>
                 <button id="add-book" type="submit">Ajouter le livre</button>
