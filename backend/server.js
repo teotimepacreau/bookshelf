@@ -74,14 +74,14 @@ const isAuthenticated = async (req, res, next) => {
 // ADD BOOj route and pre-handler for verifying that user is authenticated before handling the req
 app.route({
     method: 'POST',
-    url: '/add-book',
+    url: '/addbook',
     preHandler: isAuthenticated, // Apply the middleware here
     handler: async (req, res) => {
       try{
         const book = {
-            bookTitle: req.body.titre,
-            bookAuthor: req.body.auteur,
-            bookCoverImg: req.body.couverture
+            bookTitle: req.body.bookTitle,
+            bookAuthor: req.body.bookAuthor,
+            bookCoverImg: req.body.BookCoverImg
         }
         console.log(book)
       }catch(error){
