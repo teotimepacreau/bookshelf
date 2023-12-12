@@ -70,16 +70,17 @@ const login = async () => {
             // ADD BOOK FORM
             addingBooksFields.innerHTML = `
               <form id="add-book-form">
-                <div id="flexer-adding-books-fields"
-                <label for="titre-livre">Titre</label>
-                <input type="text" name="titre" id="titre-livre" autocomplete="on">
-                <label for="auteur-livre">Auteur</label>
-                <input type="text" name="auteur" id="auteur-livre" autocomplete="on">
-                <label for="image-livre">Ajouter l'image de couverture</label>
-                <input type="file" name="image-couverture" id="image-livre" accept="image/png, image/jpeg, image/jpg">
-                <div id="add-book-flexer">
-                  <button id="cancel-add-book">Annuler</button>
-                  <button id="add-book" type="submit">Ajouter le livre</button>
+                <div id="flexer-adding-books-fields">
+                  <label for="titre-livre">Titre</label>
+                  <input type="text" name="titre" id="titre-livre" autocomplete="on">
+                  <label for="auteur-livre">Auteur</label>
+                  <input type="text" name="auteur" id="auteur-livre" autocomplete="on">
+                  <label for="image-livre">Ajouter l'image de couverture</label>
+                  <input type="file" name="image" id="image-livre" accept="image/png, image/jpeg, image/jpg">
+                  <div id="add-book-flexer">
+                    <button id="cancel-add-book">Annuler</button>
+                    <button id="add-book" type="submit">Ajouter le livre</button>
+                  </div>
                 </div>
               </form>
               `;
@@ -97,9 +98,7 @@ const login = async () => {
                 bookAuthor: addBookForm
                   .querySelector("#auteur-livre")
                   .value.trim(),
-                bookCoverImg: addBookForm
-                  .querySelector("#image-livre")
-                  .value.trim(),
+                bookCoverImg: addBookForm.querySelector("#image-livre").files[0]//nécessaire pour ne pas transférer fakepath mais le file grâce à fileAPI
               };
               try {
                 await fetch("http://localhost:3000/addbook", {
