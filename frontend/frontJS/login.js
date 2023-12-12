@@ -91,23 +91,12 @@ const login = async () => {
             console.log(addBookForm);
             addBookForm.addEventListener("submit", async (e) => {
               e.preventDefault();
-              const book = {
-                bookTitle: addBookForm
-                  .querySelector("#titre-livre")
-                  .value.trim(),
-                bookAuthor: addBookForm
-                  .querySelector("#auteur-livre")
-                  .value.trim(),
-                bookCoverImg: addBookForm.querySelector("#image-livre").files[0]//nécessaire pour ne pas transférer fakepath mais le file grâce à fileAPI
-              };
+              const formData = new FormData(addBookForm);
               try {
                 await fetch("http://localhost:3000/addbook", {
                   method: "POST",
                   credentials: "include", // OBLIGATOIRE CAR SI COOKIE ABSENT ALORS LE USER NEST PAS AUTHENTIFIE
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(book),
+                  body: formData,
                 });
               } catch (error) {
                 console.error(error);

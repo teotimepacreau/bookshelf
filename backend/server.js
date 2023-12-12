@@ -3,6 +3,15 @@ import fastifyView from "@fastify/view";
 import fastifySecureSession from '@fastify/secure-session'
 import fastifyCookie from "@fastify/cookie";
 import fastifyStatic from "@fastify/static";
+
+// UPLOAD FILES
+import fastifyMultipart from "@fastify/multipart";
+import fs from 'fs'
+import { promisify } from 'node:util';
+import { pipeline } from 'node:stream';
+
+const pump = promisify(pipeline);
+
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";//CAR EN MODULE IMPORT path et __dirname ne fonctionnent pas 
 import { dirname, join } from 'node:path';//CAR EN MODULE IMPORT path et __dirname ne fonctionnent pas 
@@ -42,6 +51,9 @@ app.register(fastifySecureSession, {
 // PERMETTRE LES SOUSMISSIONS PAR DEFAUT DE FORM
 app.register(fastifyFormBody)
 
+// UPLOAD DE FICHIERS
+app.register(fastifyMultipart)
+
 // HOMEPAGE ROUTE
 app.get('/data', async (req, res) => {//it's the handler function
     try{
@@ -71,19 +83,20 @@ const isAuthenticated = async (req, res, next) => {
     }
   };
   
-// ADD BOOj route and pre-handler for verifying that user is authenticated before handling the req
+// ADD BOOK route and pre-handler for verifying that user is authenticated before handling the req
 app.route({
     method: 'POST',
     url: '/addbook',
     preHandler: isAuthenticated, // Apply the middleware here
     handler: async (req, res) => {
       try{
-        const book = {
-            bookTitle: req.body.bookTitle,
-            bookAuthor: req.body.bookAuthor,
-            bookCoverImg: req.body.BookCoverImg
-        }
+        const book = await req.file()
+        const bookDetails = book.fields
         console.log(book)
+        console.log(bookDetails)
+        if(book.file){
+        await pump(book.file, fs.createWriteStream(`./uploads/${book.filename}`))
+        }
       }catch(error){
         console.error(error)
       }
