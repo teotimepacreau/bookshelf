@@ -114,7 +114,7 @@ const login = async () => {
                   const card = cardTemplate.content.cloneNode(true); //récupère tout ce qui est à l'intérieur du template, fera un clone avec tout le contenu
 
                   const img = card.querySelector("[data-img]");
-                  img.src = responseData.coverImgPath;
+                  img.src = new URL(responseData.coverImgPath, 'http://localhost:3000/')
 
                   const title = card.querySelector("[data-title]");
                   title.textContent = responseData.title;
@@ -122,7 +122,7 @@ const login = async () => {
                   const author = card.querySelector("[data-author]");
                   author.textContent = responseData.author;
 
-                  containerForAllCards.append(card); //attache la carte au container
+                  containerForAllCards.insertBefore(card,containerForAllCards.firstChild);
                 }
               } catch (error) {
                 console.error(error);
