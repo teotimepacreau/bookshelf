@@ -51,6 +51,12 @@ app.register(fastifyFormBody)
 // UPLOAD DE FICHIERS
 app.register(fastifyMultipart)
 
+// PASS ADDEDBOOKVIAFORM COVER IMG TO FRONT
+app.register(fastifyStatic, {
+    root: join(rootDir, 'uploads'),
+    prefix: '/uploads', // The URL prefix for accessing static files
+})
+
 // HOMEPAGE ROUTE
 app.get('/data', async (req, res) => {//it's the handler function
     try{

@@ -88,16 +88,21 @@ const login = async () => {
 
             // SENDING FORM DATA
             const addBookForm = document.querySelector("#add-book-form");
-            console.log(addBookForm);
             addBookForm.addEventListener("submit", async (e) => {
               e.preventDefault();
               const formData = new FormData(addBookForm);
               try {
-                await fetch("http://localhost:3000/addbook", {
+                const response = await fetch("http://localhost:3000/addbook", {
                   method: "POST",
                   credentials: "include", // OBLIGATOIRE CAR SI COOKIE ABSENT ALORS LE USER NEST PAS AUTHENTIFIE
                   body: formData,
                 });
+
+                // AJOUTER LES DONNEES DU LIVRE ENVOYES VIA LE FORMULAIRE A L'affichage sans reload
+                if(response.ok){
+                  let  responseData = await response.json();
+                  console.log(responseData);
+                }
               } catch (error) {
                 console.error(error);
               }

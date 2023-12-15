@@ -14,7 +14,6 @@ const dbFile = join(dbPath, "goodreads.db");
 const addBook = async (req, res) => {
     try{
         const book = await req.file()
-        console.log(book)
         if(book.file){
         await pump(book.file, fs.createWriteStream(`./uploads/${book.filename}`))
         }
@@ -29,18 +28,20 @@ const addBook = async (req, res) => {
             author: book.fields.auteur.value,
             coverImgPath: `/uploads/${book.filename}`
           };
+          
+          await db.exec(`DROP TABLE bookviaform`)
 
         await db.exec(`
             CREATE TABLE IF NOT EXISTS bookviaform (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                title TEXT,
+                title TEXT NOT NULL UNIQUE,
                 author TEXT,
                 coverImgPath TEXT
             )`);
 
         await db.run(`INSERT INTO bookviaform (title, author, coverImgPath) VALUES (?, ?, ?)`, addedBook.title, addedBook.author, addedBook.coverImgPath)
 
-        res.json(addedBook)
+        res.send(JSON.stringify(addedBook));
 
       }catch(error){
         console.error(error)
