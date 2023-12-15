@@ -6,11 +6,7 @@ import fastifyStatic from "@fastify/static";
 
 // UPLOAD FILES
 import fastifyMultipart from "@fastify/multipart";
-import fs from 'fs'
-import { promisify } from 'node:util';
-import { pipeline } from 'node:stream';
 
-const pump = promisify(pipeline);
 
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";//CAR EN MODULE IMPORT path et __dirname ne fonctionnent pas 
@@ -19,6 +15,7 @@ import { dirname, join } from 'node:path';//CAR EN MODULE IMPORT path et __dirna
 import { passBookDataToFront } from "./controllers/passBookDataToFront.js";
 
 import { loginAction, logoutAction } from "./actions/auth.js";
+import addBook from "./actions/addBook.js";
 
 import cors from '@fastify/cors'
 
@@ -88,20 +85,7 @@ app.route({
     method: 'POST',
     url: '/addbook',
     preHandler: isAuthenticated, // Apply the middleware here
-    handler: async (req, res) => {
-      try{
-        const book = await req.file()
-        const bookDetails = book.fields
-        console.log(book)
-        console.log(bookDetails)
-        if(book.file){
-        await pump(book.file, fs.createWriteStream(`./uploads/${book.filename}`))
-        }
-      }catch(error){
-        console.error(error)
-      }
-      
-    },
+    handler: addBook
 });
 
 // START SERVER
