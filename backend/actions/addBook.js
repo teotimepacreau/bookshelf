@@ -14,9 +14,7 @@ const dbFile = join(dbPath, "goodreads.db");
 const addBook = async (req, res) => {
     try{
         const book = await req.file()
-        if(book.file){
         await pump(book.file, fs.createWriteStream(`./uploads/${book.filename}`))
-        }
 
         let db = await open({//db connexion
             filename: dbFile,

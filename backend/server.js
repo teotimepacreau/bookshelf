@@ -85,7 +85,7 @@ const isAuthenticated = async (req, res, next) => {
       res.status(401).json({ error: 'Unauthorized because user is not authenticated' }); 
     }
   };
-  
+
 // ADD BOOK route and pre-handler for verifying that user is authenticated before handling the req
 app.route({
     method: 'POST',

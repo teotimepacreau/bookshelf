@@ -99,9 +99,30 @@ const login = async () => {
                 });
 
                 // AJOUTER LES DONNEES DU LIVRE ENVOYES VIA LE FORMULAIRE A L'affichage sans reload
-                if(response.ok){
-                  let  responseData = await response.json();
+                if (response.ok) {
+                  let responseData = await response.json();
                   console.log(responseData);
+
+                  const cardTemplate = document.querySelector(
+                    "[data-card-template]"
+                  );
+
+                  const containerForAllCards = document.querySelector(
+                    "[data-container-for-all-cards]"
+                  );
+
+                  const card = cardTemplate.content.cloneNode(true); //récupère tout ce qui est à l'intérieur du template, fera un clone avec tout le contenu
+
+                  const img = card.querySelector("[data-img]");
+                  img.src = responseData.coverImgPath;
+
+                  const title = card.querySelector("[data-title]");
+                  title.textContent = responseData.title;
+
+                  const author = card.querySelector("[data-author]");
+                  author.textContent = responseData.author;
+
+                  containerForAllCards.append(card); //attache la carte au container
                 }
               } catch (error) {
                 console.error(error);
