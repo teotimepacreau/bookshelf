@@ -21,5 +21,8 @@
 7. Filter function : filter books by rating through checkboxes. If the checkbox is unchecked it returns to initial state.[filter.js](./frontend/frontJS/filter.js)
 8. Login function : <dialog> element contains the connexion form. username and password are passed to the backend endpoint "/login" [login.js](./frontend/frontJS/login.js)
 ## Backend step 2
-9. Authentification : Retrieving username and password. Hashing the password throught bcrypt. Then SQL query to get the corresponding username row in DB (table auth). Bcrypt compares if the in DB hashed password matched the hashed password passed by the connexion form. If match : it uses the fastify-secure-session plugin that adds a **session cookie**. A request to this session cookie allows to ensure if the user is authenticated. It then passes to frontend the confirmation that user is authenticated.
-10. Authorization : 
+9. Authentification : Retrieving username and password. Hashing the password throught bcrypt. Then SQL query to get the corresponding username row in DB (table auth). Bcrypt compares if the in DB hashed password matched the hashed password passed by the connexion form. If match : it uses the fastify-secure-session plugin that adds a **session cookie**. A request to this session cookie allows to ensure if the user is authenticated. It then passes to frontend the confirmation that user is authenticated.[auth.js](./backend/actions/auth.js)
+10. Authorization : only authenticated user that have a session-cookie are allowed to make a POST request by filling the addbook form.[addBook.js](./backend/actions/addBook.js)
+11. Adding the book data provided through the form to the db and passing it to frontend trhough "/addedbookfromform" route [server.js](./backend/server.js)
+## Frontend step 2
+- Adding book to the collection : when addBookForm is received it visually adds the book to the page, and adds it to the DB. At reload : it combines "goodreads" & "bookviaform" table [displayAddedViaFormBooks.js](./frontend/utils/displayAddedViaFormBooks.js)
