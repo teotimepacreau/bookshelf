@@ -2,10 +2,11 @@
 - separate frontend and backend in different folders
 - working with ES Modules
 - loading asynchronously ES Modules thanks to the import('') function
-- passing data from backend to frontend
+- passing data from backend to frontend via routes
+- using pre-handler function to ensure only authenticated user can make a POST request
 - using Vite for frontend to benefits of Hot Module Replacement and imports every module in one JS file logic
 - fixing CORS issues (origin, methods, credentials)
-- authentification through session secure cookies. Difference betwen BasicAuth, SessionAuth and JWT
+- authentification through session secure cookies. Learned the difference betwen BasicAuth, SessionAuth and JWT
 - authorization depending on the route thanks to pre-handler function (it's Fastify alternative to middleware)
 - HTML <template> functionnality
 
