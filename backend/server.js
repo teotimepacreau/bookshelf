@@ -1,5 +1,4 @@
 import fastify from "fastify";
-import fastifyView from "@fastify/view";
 import fastifySecureSession from '@fastify/secure-session'
 import fastifyCookie from "@fastify/cookie";
 import fastifyStatic from "@fastify/static";
@@ -13,6 +12,7 @@ import { fileURLToPath } from "node:url";//CAR EN MODULE IMPORT path et __dirnam
 import { dirname, join } from 'node:path';//CAR EN MODULE IMPORT path et __dirname ne fonctionnent pas 
 
 import { passBookDataToFront } from "./controllers/passBookDataToFront.js";
+import { passBookAddedViaFormToFront } from "./controllers/passBookAddedViaFormToFront.js"
 
 import { loginAction, logoutAction } from "./actions/auth.js";
 import addBook from "./actions/addBook.js";
@@ -57,7 +57,7 @@ app.register(fastifyStatic, {
     prefix: '/uploads', // The URL prefix for accessing static files
 })
 
-// HOMEPAGE ROUTE
+// PASS BOOK DATA FROM SQL TABLE
 app.get('/data', async (req, res) => {//it's the handler function
     try{
         const { sanitarizedRows, bookcovers } = await passBookDataToFront();
@@ -68,9 +68,18 @@ app.get('/data', async (req, res) => {//it's the handler function
         res.send(data)// '/data' is the endpoint
     }catch(error){
         console.error(error)
-    }
-     
+    }    
 });
+
+// PASS BOOKADDEDVIAFORM DATA
+app.get('/addedbookfromform', async (req, res) => {
+    try{
+        const bookAddedViaFormRows = await passBookAddedViaFormToFront()
+        res.send(JSON.stringify(bookAddedViaFormRows))
+    }catch(error){
+        console.error(error)
+    }
+})
 
 // AUTHENTICATION
 app.post('/login', loginAction)

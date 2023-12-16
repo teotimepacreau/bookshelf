@@ -27,7 +27,7 @@ const addBook = async (req, res) => {
             coverImgPath: `/uploads/${book.filename}`
           };
           
-          await db.exec(`DROP TABLE bookviaform`)
+          // await db.exec(`DROP TABLE bookviaform`)
 
         await db.exec(`
             CREATE TABLE IF NOT EXISTS bookviaform (

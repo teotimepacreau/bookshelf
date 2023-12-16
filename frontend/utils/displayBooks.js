@@ -32,6 +32,8 @@ export default async function displayBooks(){
                 }
             }
         }
+
+        
     }catch(error){
         console.error(error)
     }

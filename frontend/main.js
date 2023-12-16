@@ -28,10 +28,13 @@ async function loadingOrder() {
       const { default: filterFunction } = await import('./frontJS/filter.js');
 
       const {default: login } = await import ('./frontJS/login.js')
+
+      const {default: displayBooksAddedViaForm} = await import ('./utils/displayAddedViaFormBooks.js')
   
       searchFunction();
       filterFunction();
       login();
+      displayBooksAddedViaForm();
 
   } catch (error) {
     console.error(error);
