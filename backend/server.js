@@ -100,7 +100,7 @@ app.route({
     method: 'POST',
     url: '/addbook',
     preHandler: isAuthenticated, // Apply the middleware here
-    handler: addBook
+    handler: addBook //voir ./actions/addBook.js
 });
 
 // START SERVER

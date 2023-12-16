@@ -52,12 +52,19 @@ export const loginAction = async (req, res) => {
                         })
                         res.send({ user: req.session.get('user')});
                 }else{  
-                        // envoie au frontend
-                        res.send({ user: false})
+                        res.status(401).send({
+                                statusCode: 401,
+                                error: 'Unauthorized',
+                                message: 'Username or password invalid',
+                            });
                 }
         }catch(error){
                 console.error(error)
-                res.send({user: false})
+                res.status(401).send({
+                        statusCode: 401,
+                        error: 'Unauthorized',
+                        message: 'Error server side trying to login',
+                    });
         }
 }
 
