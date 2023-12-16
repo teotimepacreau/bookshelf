@@ -6,10 +6,13 @@ import displayBooks from './utils/displayBooks.js';
 
 async function loadingOrder() {
   try {
-    // ajouter les livres au container
-    // document.getElementById('book-container').innerHTML =
+    // ajouter les livres de la table goodreads au container
     await displayBooks();
 
+    // ajouter les livres de la table bookviaform au container
+    const {default: displayBooksAddedViaForm} = await import ('./utils/displayAddedViaFormBooks.js')
+    displayBooksAddedViaForm();
+    
     // ajouter l'effet de tilt sur les couvertures des livres, uniquement ici car sinon appliqué avant l'ajout au DOM
     const allBookCovers = document.querySelectorAll('.book-cover');
     for (let book of allBookCovers) {
@@ -29,12 +32,11 @@ async function loadingOrder() {
 
       const {default: login } = await import ('./frontJS/login.js')
 
-      const {default: displayBooksAddedViaForm} = await import ('./utils/displayAddedViaFormBooks.js')
   
       searchFunction();
       filterFunction();
       login();
-      displayBooksAddedViaForm();
+      
 
   } catch (error) {
     console.error(error);
