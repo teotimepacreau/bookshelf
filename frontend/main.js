@@ -32,9 +32,10 @@ async function loadingOrder() {
 
       const {default: login } = await import ('./frontJS/login.js')
 
-  
+      const {default: sorter} = await import ('./frontJS/sort.js')
       searchFunction();
       filterFunction();
+      sorter()
       login();
       
 
