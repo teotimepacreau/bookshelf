@@ -301,10 +301,9 @@ aside > * + * {
   width: 100%;
   padding: calc(0.5 * var(--rythme));
   border: none;
-  background-color: var(--surface1with7opacity);
+  background-color: var(--surface1with5opacity);
   border-radius: 0.2rem;
-  border: none;
-  box-shadow: 1px 1px 1px 0px var(--shadow);
+  box-shadow: 1px 1px 1px 0px var(--shadow), -1px 0px 1px 0px var(--shadow);
 }
 
 #star-filter-rating-divider {
@@ -354,7 +353,12 @@ aside > * + * {
 }
 
 /* SORTER */
-#sort-button {
+#sort-container {
+  position: relative;
+}
+#sorter {
+  cursor: pointer;
+  appearance: none;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -366,11 +370,14 @@ aside > * + * {
   outline: 1px solid var(--surface1with50opacity);
   color: var(--surface1with90opacity);
   padding-inline: calc(0.6 * var(--rythme));
-  padding-block: calc(0.4 * var(--rythme));
+  padding-block: calc(0.7 * var(--rythme));
   font-weight: 500;
 }
 
-#sort-button i {
+#sort-container i {
+  position: absolute;
+  right: calc(0.6 * var(--rythme));
+  top: calc(0.55 * var(--rythme));
   background-color: var(--surface1with5opacity);
   padding: calc(0.3 * var(--rythme));
   border-radius: 50%;
@@ -378,7 +385,7 @@ aside > * + * {
   transition: all 0.3s ease-out;
 }
 
-#sort-button i:hover {
+#sort-container i:hover {
   background-color: var(--surface1with7opacity);
 }
 
