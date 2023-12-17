@@ -1,7 +1,7 @@
 // PSEUDO CODE : au clic sur l'option je récupère la valeur de l'option. EN fonction de la valeur de l'option j'exécute un ordre.
 
 const sorter = ()=>{
-    const allBooks = document.querySelectorAll('.book-card')
+    const allBooks = Array.from(document.querySelectorAll('.book-card'))//Array.from car sort ne fonctionne pas sur une NodeList
     console.log(allBooks)
 
     const sorter = document.querySelector('select[name="sort-by"]')
@@ -11,10 +11,12 @@ const sorter = ()=>{
         switch(value){
             case 'Titre de A à Z':
                 console.log('case1')
-                allBooks.toSorted((a,b), ()=>{
+                const AZArray = allBooks.toSorted((a,b)=>{
                     const titleA = a.querySelector('.book-title').innerText
                     const titleB = b.querySelector('.book-title').innerText
+                    return titleA.localeCompare(titleB)
                 })
+                console.log(AZArray)
                 
                 break
             case "Titre de Z à A":
