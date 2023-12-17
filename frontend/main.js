@@ -11,7 +11,7 @@ async function loadingOrder() {
 
     // ajouter les livres de la table bookviaform au container
     const {default: displayBooksAddedViaForm} = await import ('./utils/displayAddedViaFormBooks.js')
-    displayBooksAddedViaForm();
+    await displayBooksAddedViaForm();
     
     // ajouter l'effet de tilt sur les couvertures des livres, uniquement ici car sinon appliqué avant l'ajout au DOM
     const allBookCovers = document.querySelectorAll('.book-cover');

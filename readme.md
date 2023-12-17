@@ -1,7 +1,7 @@
 # What I learned :
 - separate frontend and backend in different folders
 - working with ES Modules
-- loading asynchronously ES Modules thanks to the import('') function
+- loading asynchronously ES Modules and scriptd thanks the import('') function [main.js](./frontend/main.js)
 - passing data from backend to frontend via routes
 - using pre-handler function to ensure only authenticated user can make a POST request
 - using Vite for frontend to benefits of Hot Module Replacement and imports every module in one JS file logic

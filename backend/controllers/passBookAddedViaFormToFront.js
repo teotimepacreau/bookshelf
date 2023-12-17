@@ -17,7 +17,6 @@ export async function passBookAddedViaFormToFront() {
   });
 
   const bookAddedViaFormRows = await db.all("SELECT * FROM bookviaform");
-  console.log(bookAddedViaFormRows)
 
   return bookAddedViaFormRows
 }

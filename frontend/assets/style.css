@@ -1,12 +1,12 @@
-:root{
+:root {
   --rythme: 1rlh;
   --bg: #ffff;
   --accent: oklch(30% 0.2 200);
-  --accentwith10opacity:oklch(from var(--accent) l c h / 10%);
+  --accentwith10opacity: oklch(from var(--accent) l c h / 10%);
   --surface1: oklch(50% 0.02 200);
   --surface1with2opacity: oklch(from var(--surface1) l c h / 2%);
   --surface1with5opacity: oklch(from var(--surface1) l c h / 5%);
-  --surface1with10opacity: oklch(from var(--surface1) l c h / 10%);
+  --surface1with7opacity: oklch(from var(--surface1) l c h / 7%);
   --surface1with50opacity: oklch(from var(--surface1) l c h / 50%);
   --surface1with90opacity: oklch(from var(--surface1) l c h / 90%);
   --surface1with98opacity: oklch(from var(--surface1) l c h / 98%);
@@ -14,7 +14,7 @@
   --orange: oklch(90% 0.37 85 / 85%);
   --yellow: oklch(87.82% 0.1933 115.55);
   --green: oklch(40% 0.3 140);
-  --shadow: oklch(5% 0.02 200 / 15%)
+  --shadow: oklch(5% 0.02 200 / 15%);
 }
 
 /* CSS RESET */
@@ -22,11 +22,11 @@
 *::before,
 *::after {
   box-sizing: border-box;
-   margin: 0; 
-   padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-*{
+* {
   accent-color: var(--surface1);
 }
 
@@ -35,12 +35,20 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-   scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* Remove default margin in favour of better control in authored CSS */
-body, h1, h2, h3, h4, p,
-figure, blockquote, dl, dd {
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
   margin: 0;
 }
 
@@ -52,25 +60,26 @@ ol {
 
 /* Set core body defaults */
 body {
-  font-family: system-ui, 'Segoe UI', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
 /* Set shorter line heights on headings and text-wrap */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   line-height: 1.2;
   text-wrap: balance;
 }
 
-
 /* A elements that don't have a class get default styles */
 
-
-button { 
+button {
   line-height: 1rlh;
   cursor: pointer;
   transition: all 0.3s ease-out;
   background-color: unset;
- }
+}
 
 /* Make images easier to work with */
 img,
@@ -80,8 +89,10 @@ picture {
 }
 
 /* Inherit fonts for inputs and buttons */
-input, button,
-textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
@@ -95,27 +106,27 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
-/* More consistent, styleable hr*/ 
- hr { 
-   border-width: 1px 0 0 0; 
-   color: inherit; 
-   height: 0; 
-   overflow: visible; 
- }
+/* More consistent, styleable hr*/
+hr {
+  border-width: 1px 0 0 0;
+  color: inherit;
+  height: 0;
+  overflow: visible;
+}
 
-*:focus-visible{
+*:focus-visible {
   transition: all 0.2s ease;
   box-shadow: 0px 0px 1px 3px var(--surface1);
   border-radius: inherit;
 }
 
-input[type="radio"]:focus-visible{
+input[type="radio"]:focus-visible {
   box-shadow: none;
   outline-offset: 4px;
   outline-color: var(--surface1);
 }
 
-input[type="checkbox"]:focus-visible{
+input[type="checkbox"]:focus-visible {
   box-shadow: none;
   outline-offset: 4px;
   outline-color: var(--surface1);
@@ -123,17 +134,17 @@ input[type="checkbox"]:focus-visible{
 
 /* Increase the size of the checkbox */
 input[type="checkbox"] {
-  width: calc(.6*var(--rythme)); /* Adjust the width */
-  height: calc(.6*var(--rythme)); /* Adjust the height */
+  width: calc(0.6 * var(--rythme)); /* Adjust the width */
+  height: calc(0.6 * var(--rythme)); /* Adjust the height */
 }
 
-input[type = "search"] { 
-  appearance: none; 
-  border: none; 
-  outline: none; 
- }
+input[type="search"] {
+  appearance: none;
+  border: none;
+  outline: none;
+}
 
-input[type="file"]{
+input[type="file"] {
   appearance: none;
   border: none;
   background-color: var(--bg);
@@ -141,20 +152,17 @@ input[type="file"]{
   transition: all 0.2s ease-out;
 }
 
-
-#btn-connexion:focus-visible{
+#btn-connexion:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 6px;
-} 
+}
 
-dialog button:focus-visible{
+dialog button:focus-visible {
   box-shadow: none;
   outline: 1px ridge var(--accent);
   outline-offset: 4px;
   border-radius: 0.5rem;
 }
-
-
 
 input[type="text"]:focus-visible,
 input[type="password"]:focus-visible {
@@ -165,17 +173,17 @@ input[type="password"]:focus-visible {
   box-shadow: none;
 }
 
-input[type="search"]:focus-visible{
+input[type="search"]:focus-visible {
   background-color: var(--accentwith10opacity);
   box-shadow: none;
 }
 
-#search-btn:focus-visible{
+#search-btn:focus-visible {
   box-shadow: none;
   outline-color: var(--accent);
 }
 
-#search-btn:active{
+#search-btn:active {
   background-color: var(--accentwith10opacity);
 }
 
@@ -187,7 +195,7 @@ body {
   margin-top: var(--rythme);
   display: grid;
   grid-template-columns: minmax(100px, 0.5fr) 2fr;
-  gap: calc(2*var(--rythme));
+  gap: calc(2 * var(--rythme));
 }
 
 #homepage-container {
@@ -196,9 +204,9 @@ body {
 }
 
 #library {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap : calc(2*var(--rythme));
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: calc(2 * var(--rythme));
 }
 
 /* HEADER */
@@ -209,9 +217,9 @@ body {
 
 /* ASIDE */
 
-  aside > * {
-    margin-top: var(--rythme);
-  }
+aside > * + * {
+  margin-top: var(--rythme);
+}
 
 /* SEARCH BAR */
 #search-bar-container {
@@ -228,7 +236,7 @@ body {
 
 #search-input {
   width: 100%;
-  padding: calc(0.6*var(--rythme));
+  padding: calc(0.6 * var(--rythme));
   font-weight: 500;
 }
 
@@ -236,16 +244,16 @@ body {
   flex-grow: 0;
   border: none;
   transition: all 0.2s ease-out;
-  padding: calc(0.6*var(--rythme));
+  padding: calc(0.6 * var(--rythme));
 }
 
 #search-btn i {
   background-color: var(--surface1with5opacity);
-  padding: calc(0.3*var(--rythme));
+  padding: calc(0.3 * var(--rythme));
   border-radius: 50%;
 }
 
-#search-btn:hover{
+#search-btn:hover {
   background-color: var(--surface1with5opacity);
 }
 
@@ -271,51 +279,51 @@ body {
   border: none;
   outline: 1px solid var(--surface1with50opacity);
   color: var(--surface1with90opacity);
-  padding-inline: calc(0.6*var(--rythme));
-  padding-block: calc(0.4*var(--rythme));
+  padding-inline: calc(0.6 * var(--rythme));
+  padding-block: calc(0.4 * var(--rythme));
   font-weight: 500;
 }
 
 #filter-button i {
   background-color: var(--surface1with5opacity);
-  padding: calc(0.3*var(--rythme));
+  padding: calc(0.3 * var(--rythme));
   border-radius: 50%;
   color: black;
   transition: all 0.3s ease-out;
 }
 
 #filter-button i:hover {
-  background-color: var(--surface1with10opacity);
+  background-color: var(--surface1with7opacity);
 }
 #all-filters-container {
-  visibility: hidden;
-  margin-top: calc(0.25*var(--rythme));
+  display: none;
+  margin-top: calc(0.25 * var(--rythme));
   width: 100%;
-  padding: calc(0.5*var(--rythme));
+  padding: calc(0.5 * var(--rythme));
   border: none;
-  background-color: var(--surface1with10opacity); 
+  background-color: var(--surface1with7opacity);
   border-radius: 0.2rem;
   border: none;
-  box-shadow: 1px 1px 2px 0.1px var(--shadow) ;
+  box-shadow: 1px 1px 1px 0px var(--shadow);
 }
 
-#star-filter-rating-divider{
-  margin-block: calc(0.25*var(--rythme));
+#star-filter-rating-divider {
+  margin-block: calc(0.25 * var(--rythme));
 }
 
-.star-checkboxes{
+.star-checkboxes {
   cursor: pointer;
   display: flex;
   gap: 1ch;
   line-height: 1rlh;
   align-items: baseline;
   transition: background-color 0.3s ease-out;
-  padding: calc(0.25*var(--rythme));
+  padding: calc(0.25 * var(--rythme));
   border-radius: 0.15rem;
 }
 
-.star-checkboxes:hover{
-  background-color: var(--surface1with10opacity);
+.star-checkboxes:hover {
+  background-color: var(--surface1with7opacity);
 }
 
 .star-checkboxes i {
@@ -330,7 +338,7 @@ body {
 
 .filters-visible {
   z-index: 999 !important;
-  visibility: visible !important;
+  display: block !important;
   animation: filters-fade-in 0.2s ease-out !important;
 }
 
@@ -338,16 +346,46 @@ body {
   from {
     opacity: 0;
     transform: scale(0.98);
-  }to{
+  }
+  to {
     opacity: 1;
     transform: scale(1);
   }
 }
 
+/* SORTER */
+#sort-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--rythme);
+  outline: 1px solid var(--surface1);
+  border-radius: 0.2rem;
+  border: none;
+  outline: 1px solid var(--surface1with50opacity);
+  color: var(--surface1with90opacity);
+  padding-inline: calc(0.6 * var(--rythme));
+  padding-block: calc(0.4 * var(--rythme));
+  font-weight: 500;
+}
+
+#sort-button i {
+  background-color: var(--surface1with5opacity);
+  padding: calc(0.3 * var(--rythme));
+  border-radius: 50%;
+  color: black;
+  transition: all 0.3s ease-out;
+}
+
+#sort-button i:hover {
+  background-color: var(--surface1with7opacity);
+}
+
 /* ADD BOOKS */
 #btn-add-book {
-  padding-inline: calc(0.6*var(--rythme));
-  padding-block: calc(0.4*var(--rythme));
+  padding-inline: calc(0.6 * var(--rythme));
+  padding-block: calc(0.4 * var(--rythme));
   border-radius: 0.2rem;
   border: none;
   outline: 1px solid var(--surface1with50opacity);
@@ -361,24 +399,24 @@ body {
 
 #btn-add-book i {
   background-color: var(--surface1with90opacity);
-    padding: calc(0.3*var(--rythme));
-    border-radius: 50%;
-    color: white;
-    transition: all 0.3s ease-out;
+  padding: calc(0.3 * var(--rythme));
+  border-radius: 50%;
+  color: white;
+  transition: all 0.3s ease-out;
 }
 
 #flexer-adding-books-fields {
   width: 100%;
-  margin-top: calc(0.25*var(--rythme));
+  margin-top: calc(0.25 * var(--rythme));
   display: flex;
   flex-direction: column;
-  padding: calc(0.5*var(--rythme));
+  padding: calc(0.5 * var(--rythme));
   border: none;
-  background-color: var(--accentwith10opacity); 
+  background-color: var(--accentwith10opacity);
   border-radius: 0.2rem;
   border: none;
-  box-shadow: 1px 1px 2px 0.1px var(--shadow) ;
-  gap: calc(0.25*var(--rythme));
+  box-shadow: 1px 1px 2px 0.1px var(--shadow);
+  gap: calc(0.25 * var(--rythme));
 }
 
 #flexer-adding-books-fields input:not([type="file"]) {
@@ -388,17 +426,17 @@ body {
   padding-inline: 0.8ch;
   border-bottom: 1px solid var(--surface1);
   background-color: var(--bg);
-  border-radius: .2rem .2rem 0 0;
+  border-radius: 0.2rem 0.2rem 0 0;
   transition: all 0.2s ease-out;
 }
 
 #add-book-flexer {
-  margin-top: calc(0.5*var(--rythme));
+  margin-top: calc(0.5 * var(--rythme));
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: calc(0.5*var(--rythme));
+  gap: calc(0.5 * var(--rythme));
 }
 
 #add-book-flexer button {
@@ -406,22 +444,22 @@ body {
   color: var(--bg);
   border: 1px ridge var(--accent);
   border-radius: 0.5rem;
-  padding-block: calc(0.2*var(--rythme));
-  padding-inline: calc(0.4*var(--rythme));
+  padding-block: calc(0.2 * var(--rythme));
+  padding-inline: calc(0.4 * var(--rythme));
 }
 
-#add-book-flexer button:first-child{
+#add-book-flexer button:first-child {
   background-color: transparent;
   color: var(--accent);
 }
 
 /* CONNEXION */
 #btn-connexion {
-  padding-block: calc(0.4*var(--rythme));
-  padding-inline: calc(0.8*var(--rythme));
+  padding-block: calc(0.4 * var(--rythme));
+  padding-inline: calc(0.8 * var(--rythme));
   font-weight: 500;
   border: 1px ridge transparent;
-  background-color: var(--surface1with10opacity);
+  background-color: var(--surface1with7opacity);
   border-radius: 0.5rem;
   box-shadow: 1px 1px 1px 0px var(--shadow);
   transition: all 0.2s ease;
@@ -429,7 +467,7 @@ body {
 }
 
 #btn-connexion:hover {
-  background-color: var(--surface1with10opacity);
+  background-color: var(--surface1with7opacity);
   border: 1px ridge var(--surface1);
 }
 
@@ -441,9 +479,9 @@ dialog {
   transform: translateY(5%);
   z-index: 999;
   position: absolute;
-  left: unset;/*RESOUD LA NON POSSIBILITE DE POSITION ABSOLUTE RIGHT*/
+  left: unset; /*RESOUD LA NON POSSIBILITE DE POSITION ABSOLUTE RIGHT*/
   right: var(--rythme);
-  padding: calc(0.5*var(--rythme));
+  padding: calc(0.5 * var(--rythme));
   border: 1px solid transparent;
   border-radius: 0.3rem;
   box-shadow: 1px 1px 3px 0px var(--shadow);
@@ -454,7 +492,7 @@ dialog {
 dialog > form {
   display: flex;
   flex-direction: column;
-  gap: calc(0.25*var(--rythme));
+  gap: calc(0.25 * var(--rythme));
 }
 
 dialog input {
@@ -464,16 +502,16 @@ dialog input {
   padding-inline: 0.8ch;
   border-bottom: 1px solid var(--surface1);
   background-color: var(--surface1with5opacity);
-  border-radius: .2rem .2rem 0 0;
+  border-radius: 0.2rem 0.2rem 0 0;
   transition: all 0.2s ease-out;
 }
 
-dialog button{
+dialog button {
   background-color: var(--accentwith10opacity);
   border: 1px ridge var(--surface1with98opacity);
   border-radius: 0.5rem;
-  padding-block: calc(0.3*var(--rythme));
-  padding-inline: calc(0.6*var(--rythme));
+  padding-block: calc(0.3 * var(--rythme));
+  padding-inline: calc(0.6 * var(--rythme));
 }
 
 #cancel-connexion-dialog {
@@ -493,13 +531,13 @@ dialog button[type="submit"]:hover {
 }
 
 #connexion-btn-flexer {
-  margin-top: calc(0.5*var(--rythme));
+  margin-top: calc(0.5 * var(--rythme));
   display: flex;
   align-items: center;
-  gap: calc(0.5*var(--rythme));
+  gap: calc(0.5 * var(--rythme));
 }
 
-#connexion-btn-flexer > *{
+#connexion-btn-flexer > * {
   min-width: max-content;
 }
 
@@ -513,9 +551,9 @@ dialog button[type="submit"]:hover {
   gap: 0.5ch;
   position: absolute;
   right: var(--rythme);
-  top: calc(4*var(--rythme));
-  padding-inline: calc(0.4*var(--rythme));
-  padding-block: calc(0.2*var(--rythme));
+  top: calc(4 * var(--rythme));
+  padding-inline: calc(0.4 * var(--rythme));
+  padding-block: calc(0.2 * var(--rythme));
   border-radius: 0.3rem;
   animation: fade 0.4s ease-out;
   box-shadow: 1px 1px 2px 0px var(--shadow);
@@ -564,8 +602,6 @@ dialog button[type="submit"]:hover {
   color: var(--red);
   border-color: var(--red);
 }
-
-
 
 @keyframes fade {
   from {

@@ -4,7 +4,6 @@ export default async function displayBooksAddedViaForm(){
         const response = await fetch('http://localhost:3000/addedbookfromform')
         if(response.ok) {
             const booksViaForm = await response.json()
-            console.log(booksViaForm)
 
             for(let book of booksViaForm){
 
