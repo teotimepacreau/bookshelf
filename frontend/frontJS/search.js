@@ -10,27 +10,30 @@ const searchFunction = () => {
     const searchedByTheUser = searchInput.value.toLowerCase();
 
     const allBooksTitles = document.querySelectorAll(".book-title");
+    document.startViewTransition(() => {
+      for (let bookTitle of allBooksTitles) {
+        const bookContainer = bookTitle.closest(".book-card");
+        if (!bookTitle.innerText.toLowerCase().includes(searchedByTheUser)) {
+          bookContainer.style.display = "none";
 
-    for (let bookTitle of allBooksTitles) {
-      const bookContainer = bookTitle.closest(".book-card");
-      if (!bookTitle.innerText.toLowerCase().includes(searchedByTheUser)) {
-        bookContainer.style.display = "none";
-
-        //II.
-      } else {
-        bookContainer.style.display = "block";
+          //II.
+        } else {
+          bookContainer.style.display = "block";
+        }
       }
-    }
+    });
   });
 
   searchInput.addEventListener("input", () => {
     const allBooksContainer = document.querySelectorAll(".book-card");
-    if (searchInput.value.length === 0) {
-      for (let book of allBooksContainer) {
-        book.style.display = "block";
+    document.startViewTransition(() => {
+      if (searchInput.value.length === 0) {
+        for (let book of allBooksContainer) {
+          book.style.display = "block";
+        }
       }
-    }
+    });
   });
 };
 
-export default searchFunction
+export default searchFunction;

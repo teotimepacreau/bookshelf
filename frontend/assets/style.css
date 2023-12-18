@@ -1,6 +1,7 @@
 :root {
   --rythme: 1rlh;
-  --bg: #ffff;
+  --bg: oklch(99% 0.006 200);
+  --white: oklch(99% 0.002 200);
   --accent: oklch(30% 0.2 200);
   --accentwith10opacity: oklch(from var(--accent) l c h / 10%);
   --surface1: oklch(50% 0.02 200);
@@ -258,7 +259,7 @@ aside > * + * {
 }
 
 #search-btn:hover i {
-  background-color: white;
+  background-color: var(--white);
 }
 
 /* FILTER */
@@ -282,6 +283,7 @@ aside > * + * {
   padding-inline: calc(0.6 * var(--rythme));
   padding-block: calc(0.4 * var(--rythme));
   font-weight: 500;
+  background-color: var(--white);
 }
 
 #filter-button i {
@@ -301,7 +303,7 @@ aside > * + * {
   width: 100%;
   padding: calc(0.5 * var(--rythme));
   border: none;
-  background-color: var(--surface1with5opacity);
+  background-color: var(--white);
   border-radius: 0.2rem;
   box-shadow: 1px 1px 1px 0px var(--shadow), -1px 0px 1px 0px var(--shadow);
 }
@@ -408,7 +410,7 @@ aside > * + * {
   background-color: var(--surface1with90opacity);
   padding: calc(0.3 * var(--rythme));
   border-radius: 50%;
-  color: white;
+  color: var(--white);
   transition: all 0.3s ease-out;
 }
 
@@ -626,7 +628,7 @@ dialog button[type="submit"]:hover {
 /* BOOK CARD */
 .book-card {
   max-width: 40ch;
-  background-color: var(--surface1with2opacity);
+  background-color: var(--white);
   border-radius: 0.3rem;
   box-shadow: 0.5px 0.5px 2.2px 0px var(--shadow);
 }
@@ -663,4 +665,5 @@ h2 {
 #page-title {
   font-size: calc(2*var(--rythme));
   font-weight: 700;
+  letter-spacing: -0.05rem;
 }

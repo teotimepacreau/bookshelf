@@ -31,7 +31,7 @@ const sorter = () => {
       case "Note croissante":
         result = initialBooksArray.toSorted((a, b) => {
           const averageRatingA = parseFloat(
-            a.querySelector("[data-averagerating]").innerText.match(/(\d+)/)//.match(/(\d+)/) est du REGEX pour tirer que les chiffres
+            a.querySelector("[data-averagerating]").innerText.match(/(\d+)/) //.match(/(\d+)/) est du REGEX pour tirer que les chiffres
           ); //obligé de parseFloat car sinon compare les string au lieu des nb
           const averageRatingB = parseFloat(
             b.querySelector("[data-averagerating]").innerText.match(/(\d+)/)
@@ -52,8 +52,10 @@ const sorter = () => {
         break;
     }
     // chaque case retourne l'array result changée à sa manière, sans toucher à l'initialBooksArray, il ne reste plus qu'à vider le HTML du container et le remplir avec result    containerForAllCards.innerHTML = "";
-    result.forEach((book) => {
-      containerForAllCards.appendChild(book);
+    document.startViewTransition(() => {
+      result.forEach((book) => {
+        containerForAllCards.appendChild(book);
+      });
     });
   });
 };

@@ -4,14 +4,18 @@ const login = async () => {
   const dialog = document.querySelector("#connexion-dialog");
 
   btn.addEventListener("click", () => {
-    const btnCoordinates = btn.getBoundingClientRect();
-    dialog.style.top = `${btnCoordinates.bottom}px`;
-    dialog.show();
+    document.startViewTransition(() => {
+      const btnCoordinates = btn.getBoundingClientRect();
+      dialog.style.top = `${btnCoordinates.bottom}px`;
+      dialog.show();
+    });
   });
 
   const cancelBtn = dialog.querySelector("#cancel-connexion-dialog");
   cancelBtn.addEventListener("click", () => {
-    dialog.close();
+    document.startViewTransition(() => {
+      dialog.close();
+    });
   });
 
   // obligé de déclarer ici à l'extérieur de l'eventListener la response car le return response dans la fonction en dessous met juste fin à l'eventListener, il ne passe pas la variable au global scope
@@ -37,38 +41,68 @@ const login = async () => {
       const loginReceived = response.json();
       loginReceived.then((loginReceivedJSObject) => {
         if (loginReceivedJSObject.user) {
+          async function addLoginNotif(){
           //CONNECTED NOTIF
-          const notifConnecté = document.createElement("div");
-          notifConnecté.id = "connected-flexer";
-          notifConnecté.innerHTML = `
+          document.startViewTransition(() => {
+            const notifConnecté = document.createElement("div");
+            notifConnecté.id = "connected-flexer";
+            notifConnecté.innerHTML = `
           <div id="connected-first-line">
             <i class="ph ph-check-circle"></i>
             <span>Connecté !</span>
           </div>
           <button id="logout-btn">Logout<i class="ph ph-sign-out"></i></button>
           `;
-          notifConnecté.classList.add("notif", "connected");
-          notifConnecté.setAttribute("role", "alert");
-          const container = document.querySelector("#homepage-container");
-          container.appendChild(notifConnecté);
+            notifConnecté.classList.add("notif", "connected");
+            notifConnecté.setAttribute("role", "alert");
+            const container = document.querySelector("#homepage-container");
+            container.appendChild(notifConnecté);
+          });          
+        }
+        addLoginNotif()
+        const logout = async () => {
+          await addLoginNotif();
+          const logoutBtn = document.querySelector("#logout-btn");
+          console.log(logoutBtn)
+          logoutBtn.addEventListener("click", async () => {
+            try {
+              let logoutResponse = await fetch("http://localhost:3000/logout");
+              console.log(logoutResponse);
+              if (logoutResponse.status === 200) {
+                logoutBtn.parentElement.style.display = "none";
+                addBookBtn.style.display = "none";
+                addingBooksContainer.style.display = "none";
+              } else {
+                console.error("logout not achieved");
+              }
+            } catch (error) {
+              console.error(error);
+            }
+          })
+        }
+        logout()
 
           // ADD BOOK FIELD
-          const aside = document.querySelector("aside");
-          const addingBooksContainer = document.createElement("div");
-          addingBooksContainer.id = "addings-books-container";
-          aside.appendChild(addingBooksContainer);
-          const addBookBtn = document.createElement("button");
-          addBookBtn.innerHTML = `
+          document.startViewTransition(() => {
+            const aside = document.querySelector("aside");
+            const addingBooksContainer = document.createElement("div");
+            addingBooksContainer.id = "addings-books-container";
+            aside.appendChild(addingBooksContainer);
+            const addBookBtn = document.createElement("button");
+            addBookBtn.innerHTML = `
           Ajouter un livre
           <i class="ph-bold ph-plus-square"></i>
           `;
-          addBookBtn.id = "btn-add-book";
-          addingBooksContainer.append(addBookBtn);
-          addBookBtn.addEventListener("click", () => {
-            const addingBooksFields = document.createElement("div");
-            addingBooksFields.id = "addings-books-container";
-            // ADD BOOK FORM
-            addingBooksFields.innerHTML = `
+            addBookBtn.id = "btn-add-book";
+            addingBooksContainer.append(addBookBtn);
+            addBookBtn.addEventListener(
+              "click",
+              () => {
+                document.startViewTransition(() => {
+                  const addingBooksFields = document.createElement("div");
+                  addingBooksFields.id = "addings-books-container";
+                  // ADD BOOK FORM
+                  addingBooksFields.innerHTML = `
               <form id="add-book-form">
                 <div id="flexer-adding-books-fields">
                   <label for="titre-livre">Titre</label>
@@ -84,68 +118,73 @@ const login = async () => {
                 </div>
               </form>
               `;
-            addingBooksContainer.append(addingBooksFields);
-
-            // SENDING FORM DATA
-            const addBookForm = document.querySelector("#add-book-form");
-            addBookForm.addEventListener("submit", async (e) => {
-              e.preventDefault();
-              const formData = new FormData(addBookForm);
-              try {
-                const response = await fetch("http://localhost:3000/addbook", {
-                  method: "POST",
-                  credentials: "include", // OBLIGATOIRE CAR SI COOKIE ABSENT ALORS LE USER NEST PAS AUTHENTIFIE
-                  body: formData,
+                  addingBooksContainer.append(addingBooksFields);
                 });
 
-                // AJOUTER LES DONNEES DU LIVRE ENVOYES VIA LE FORMULAIRE A L'affichage sans reload
-                if (response.ok) {
-                  let responseData = await response.json();
-                  console.log(responseData);
+                // CLOSE ADD BOOK DIALOG ON CANCEL CLICK
+                const cancelAddBookBtn =
+                  document.querySelector("#cancel-add-book");
+                  cancelAddBookBtn.addEventListener("click", () => {
+                  e.preventDefault()
+                  addingBooksFields.style.display = "none";
+                });
 
-                  const cardTemplate = document.querySelector(
-                    "[data-card-template]"
-                  );
+                // SENDING FORM DATA
+                const addBookForm = document.querySelector("#add-book-form");
+                addBookForm.addEventListener("submit", async (e) => {
+                  e.preventDefault();
+                  const formData = new FormData(addBookForm);
+                  try {
+                    const response = await fetch(
+                      "http://localhost:3000/addbook",
+                      {
+                        method: "POST",
+                        credentials: "include", // OBLIGATOIRE CAR SI COOKIE ABSENT ALORS LE USER NEST PAS AUTHENTIFIE
+                        body: formData,
+                      }
+                    );
 
-                  const containerForAllCards = document.querySelector(
-                    "[data-container-for-all-cards]"
-                  );
+                    // AJOUTER LES DONNEES DU LIVRE ENVOYES VIA LE FORMULAIRE A L'affichage sans reload
+                    if (response.ok) {
+                      let responseData = await response.json();
+                      console.log(responseData);
 
-                  const card = cardTemplate.content.cloneNode(true); //récupère tout ce qui est à l'intérieur du template, fera un clone avec tout le contenu
+                      const cardTemplate = document.querySelector(
+                        "[data-card-template]"
+                      );
 
-                  const img = card.querySelector("[data-img]");
-                  img.src = new URL(responseData.coverImgPath, 'http://localhost:3000/')
+                      const containerForAllCards = document.querySelector(
+                        "[data-container-for-all-cards]"
+                      );
 
-                  const title = card.querySelector("[data-title]");
-                  title.textContent = responseData.title;
+                      const card = cardTemplate.content.cloneNode(true); //récupère tout ce qui est à l'intérieur du template, fera un clone avec tout le contenu
 
-                  const author = card.querySelector("[data-author]");
-                  author.textContent = responseData.author;
+                      const img = card.querySelector("[data-img]");
+                      img.src = new URL(
+                        responseData.coverImgPath,
+                        "http://localhost:3000/"
+                      );
 
-                  containerForAllCards.insertBefore(card,containerForAllCards.firstChild);
-                }
-              } catch (error) {
-                console.error(error);
-              }
-            });
+                      const title = card.querySelector("[data-title]");
+                      title.textContent = responseData.title;
+
+                      const author = card.querySelector("[data-author]");
+                      author.textContent = responseData.author;
+
+                      containerForAllCards.insertBefore(
+                        card,
+                        containerForAllCards.firstChild
+                      );
+                    }
+                  } catch (error) {
+                    console.error(error);
+                  }
+                });
+              },
+              { once: true }
+            );
           });
-          // LOGOUT
-          const logoutBtn = document.querySelector("#logout-btn");
-          logoutBtn.addEventListener("click", async () => {
-            try {
-              let logoutResponse = await fetch("http://localhost:3000/logout");
-              console.log(logoutResponse);
-              if (logoutResponse.status === 200) {
-                logoutBtn.parentElement.style.display = "none";
-                addBookBtn.style.display = "none";
-                addingBooksContainer.style.display = "none";
-              } else {
-                console.error("logout not achieved");
-              }
-            } catch (error) {
-              console.error(error);
-            }
-          });
+          
         } else {
           const notifConnexionImpossible = document.createElement("div");
           notifConnexionImpossible.innerHTML = `
