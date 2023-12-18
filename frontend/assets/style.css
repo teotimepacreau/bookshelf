@@ -60,7 +60,7 @@ ol {
 
 /* Set core body defaults */
 body {
-  font-family: system-ui, "Segoe UI", "Helvetica Neue", sans-serif;
+  font-family: "Overused Grotesk", system-ui, "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
 /* Set shorter line heights on headings and text-wrap */
@@ -192,7 +192,7 @@ body {
 }
 
 #main-container {
-  margin-top: var(--rythme);
+  margin-top: calc(2*var(--rythme));
   display: grid;
   grid-template-columns: minmax(100px, 0.5fr) 2fr;
   gap: calc(2 * var(--rythme));
@@ -621,4 +621,46 @@ dialog button[type="submit"]:hover {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+/* BOOK CARD */
+.book-card {
+  max-width: 40ch;
+  background-color: var(--surface1with2opacity);
+  border-radius: 0.3rem;
+  box-shadow: 0.5px 0.5px 2.2px 0px var(--shadow);
+}
+
+.book-card img {
+  width: 100%;
+  overflow: hidden;
+}
+
+.book-details {
+  padding-block: var(--rythme);
+  padding-inline: calc(0.5*var(--rythme));
+}
+
+.book-details-list {
+  margin-top: calc(0.5*var(--rythme));
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.25*var(--rythme));
+}
+
+/* FONT STYLES */
+@font-face {
+  font-family: 'Overused Grotesk';
+  src:
+    url('OverusedGrotesk-VF.woff2') format('woff2 supports variations'),
+    url('OverusedGrotesk-VF.woff2') format('woff2-variations');
+  font-weight: 300 900;
+}
+h2 {
+  font-weight: 500;
+}
+
+#page-title {
+  font-size: calc(2*var(--rythme));
+  font-weight: 700;
 }

@@ -26,7 +26,7 @@ export default async function displayBooks(){
                     publisher.textContent = row.Publisher
 
                     const averagerating = card.querySelector("[data-averagerating]")
-                    averagerating.textContent = row.AverageRating
+                    averagerating.textContent += row.AverageRating
 
                     containerForAllCards.append(card)//attache la carte au container       `
                 }

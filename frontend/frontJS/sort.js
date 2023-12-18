@@ -31,10 +31,10 @@ const sorter = () => {
       case "Note croissante":
         result = initialBooksArray.toSorted((a, b) => {
           const averageRatingA = parseFloat(
-            a.querySelector("[data-averagerating]").innerText
+            a.querySelector("[data-averagerating]").innerText.match(/(\d+)/)//.match(/(\d+)/) est du REGEX pour tirer que les chiffres
           ); //obligé de parseFloat car sinon compare les string au lieu des nb
           const averageRatingB = parseFloat(
-            b.querySelector("[data-averagerating]").innerText
+            b.querySelector("[data-averagerating]").innerText.match(/(\d+)/)
           );
           return averageRatingA - averageRatingB;
         });
@@ -42,10 +42,10 @@ const sorter = () => {
       case "Note décroissante":
         result = initialBooksArray.toSorted((a, b) => {
           const averageRatingA = parseFloat(
-            a.querySelector("[data-averagerating]").innerText
+            a.querySelector("[data-averagerating]").innerText.match(/(\d+)/)
           ); //obligé de parseFloat car sinon compare les string au lieu des nb
           const averageRatingB = parseFloat(
-            b.querySelector("[data-averagerating]").innerText
+            b.querySelector("[data-averagerating]").innerText.match(/(\d+)/)
           );
           return averageRatingB - averageRatingA;
         });

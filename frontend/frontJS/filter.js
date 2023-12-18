@@ -60,8 +60,8 @@ const filterFunction = () => {
     const allBooksContainers = document.querySelectorAll(".book-card");
     allBooksContainers.forEach((bookContainer) => {
       const bookRating = parseInt(
-        bookContainer.querySelector("[data-averagerating]").textContent
-      );
+        bookContainer.querySelector("[data-averagerating]").textContent.match(/(\d+)/)
+      );//.match(/(\d+)/) est du REGEX qui permet de tirer seulement les chiffres
       console.log(bookRating);
 
       if (bookRating === selectedRating) {
