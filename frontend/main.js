@@ -37,8 +37,7 @@ async function loadingOrder() {
       searchFunction();
       filterFunction();
       sorter();
-      login();
-      
+      await login()
 
   } catch (error) {
     console.error(error);
