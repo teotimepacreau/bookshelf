@@ -44,11 +44,17 @@ const filterFunction = () => {
       filterBooksByRating(selectedRating);
     } else {
       const allBooksContainers = document.querySelectorAll(".book-card");
-      document.startViewTransition(() => {
-      allBooksContainers.forEach((item) => {
-        item.style.display = "block";
-      });
-    })
+      if (!document.startViewTransition) {
+        allBooksContainers.forEach((item) => {
+          item.style.display = "block";
+        });
+      } else {
+        document.startViewTransition(() => {
+          allBooksContainers.forEach((item) => {
+            item.style.display = "block";
+          });
+        });
+      }
     }
   }
 
@@ -65,14 +71,21 @@ const filterFunction = () => {
           .querySelector("[data-averagerating]")
           .textContent.match(/(\d+)/)
       ); //.match(/(\d+)/) est du REGEX qui permet de tirer seulement les chiffres
-      console.log(bookRating);
-      document.startViewTransition(() => {
+      if (!document.startViewTransition) {
         if (bookRating === selectedRating) {
           bookContainer.style.display = "block";
         } else {
           bookContainer.style.display = "none";
         }
-      });
+      } else {
+        document.startViewTransition(() => {
+          if (bookRating === selectedRating) {
+            bookContainer.style.display = "block";
+          } else {
+            bookContainer.style.display = "none";
+          }
+        });
+      }
     });
   }
 };
