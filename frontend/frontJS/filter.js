@@ -40,7 +40,6 @@ const filterFunction = () => {
   function handleCheckboxChange(itemCheckbox) {
     if (itemCheckbox.checked === true) {
       const selectedRating = parseInt(itemCheckbox.value);
-      console.log(selectedRating);
       filterBooksByRating(selectedRating);
     } else {
       const allBooksContainers = document.querySelectorAll(".book-card");

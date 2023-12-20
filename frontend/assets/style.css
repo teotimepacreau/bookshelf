@@ -670,3 +670,26 @@ h2 {
   letter-spacing: -0.05rem;
 }
 
+/* PAGINATION */
+#pager-container {
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(0.5* var(--rythme));
+  grid-column: 2 / 3;
+}
+
+.page-btn {
+  padding-inline: calc(0.5*var(--rythme));
+  padding-block: calc(0.25*var(--rythme));
+  border-radius: 0.3rem;
+  border: none;
+  background-color: var(--accentwith10opacity);
+  box-shadow: 1px 1px 2px 0px var(--shadow);
+  transition: all 0.3s ease-out;
+  border: 1px ridge var(--accentwith10opacity);
+}
+
+.page-btn:hover{
+  border-color: var(--accent)
+}

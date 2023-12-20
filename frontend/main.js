@@ -34,6 +34,10 @@ async function loadingOrder() {
 
       const {default: sorter} = await import ('./frontJS/sort.js')
 
+
+      const {default: pagination} = await import ('./frontJS/pagination.js')
+
+      pagination()
       searchFunction();
       filterFunction();
       sorter();
