@@ -211,6 +211,8 @@ body {
   gap: calc(2 * var(--rythme));
 }
 
+
+
 /* HEADER */
 #header-flexer {
   display: flex;
@@ -633,6 +635,25 @@ dialog button[type="submit"]:hover {
   background-color: var(--white);
   border-radius: 0.3rem;
   box-shadow: 1px 1px 2.5px 0px var(--shadow);
+}
+
+@supports (animation-timeline: view()){
+  .book-card {
+    animation: book-entry linear forwards;/*linear pour pas qu'il y ait des différences d'accélération au scroll. forwards pour pas que l'animation disparaisse et flash à la fin*/
+    animation-timeline: view();/*l'animation commence quand on voit déjà 200px de l'élément dans le viewport*/
+    animation-range: entry 0% 30%;
+    opacity: 0;
+      scale: .8;
+      filter: blur(5px);
+  }
+}
+
+@keyframes book-entry {
+  to{
+    opacity: 1;
+    scale: 1;
+    filter: blur(0px);
+  }
 }
 
 .book-card img {
