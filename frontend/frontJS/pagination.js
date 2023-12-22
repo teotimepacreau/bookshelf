@@ -44,7 +44,7 @@ const pagination = async () => {
             index >= limiteBasseDeLivreASkipper &&
             index <= limiteHauteDeLivreASkipper
           ) {
-            book.style.display = "block";
+            book.style.display = "flex";
           } else {
             book.style.display = "none";
           }

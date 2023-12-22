@@ -27,3 +27,5 @@
 11. Adding the book data provided through the form to the db and passing it to frontend trhough "/addedbookfromform" route [server.js](./backend/server.js)
 ## Frontend step 2
 - Adding book to the collection : when addBookForm is received it visually adds the book to the page, and adds it to the DB. At reload : it combines "goodreads" & "bookviaform" table [displayAddedViaFormBooks.js](./frontend/utils/displayAddedViaFormBooks.js)
+- Logout function : clicking on the logout notif delete the session cookie, disallow to add a book to the collection and hides the add book button
+- Pagination : displaying only a limited amount of books card, setting dynamically a button for each page, styling the active button, displaying books between a certain range for each page. [pagination.js](./frontend/frontJS/pagination.js)

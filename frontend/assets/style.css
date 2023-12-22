@@ -208,7 +208,7 @@ body {
   view-transition-name: books;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: calc(2 * var(--rythme));
+  gap: calc(3 * var(--rythme));
 }
 
 
@@ -631,7 +631,8 @@ dialog button[type="submit"]:hover {
 
 /* BOOK CARD */
 .book-card {
-  max-width: 40ch;
+  flex-direction: column;
+  max-width: 400px;
   background-color: var(--white);
   border-radius: 0.3rem;
   box-shadow: 1px 1px 2.5px 0px var(--shadow);
@@ -641,7 +642,7 @@ dialog button[type="submit"]:hover {
   .book-card {
     animation: book-entry linear forwards;/*linear pour pas qu'il y ait des différences d'accélération au scroll. forwards pour pas que l'animation disparaisse et flash à la fin*/
     animation-timeline: view();/*l'animation commence quand on voit déjà 200px de l'élément dans le viewport*/
-    animation-range: entry 0% 30%;
+    animation-range: entry 0% 35%;
     opacity: 0;
       scale: .8;
       filter: blur(5px);
@@ -718,4 +719,55 @@ h2 {
 .btn-active{
   background-color: var(--accent);
   color : var(--bg);
+}
+
+/* RESERVER */
+.reserver {
+  margin-top: auto;
+  padding-inline: calc(0.5*var(--rythme));
+  padding-bottom: var(--rythme);
+}
+
+.btn-reserver {
+  transition: all 0.2s ease-out;
+  border: 1px ridge transparent;
+  line-height: 1rlh;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  gap: 1.3ch;
+  justify-content: space-between;
+  background-color: var(--accent);
+  color: white;
+  padding-block: calc(0.25*var(--rythme));
+  padding-inline: calc(0.5*var(--rythme));
+  border-radius: 0.12rem;
+  box-shadow: 1px 1px 1px 0px var(--shadow);
+}
+
+.btn-reserver-divider {
+  min-height: 0.8rlh;
+  border: 0.1px ridge white;
+  overflow: visible;
+  border-radius: 1px;
+}
+
+
+.btn-reserver i {
+  color: white;
+  font-size: 0.8rlh;
+}
+
+.btn-reserver:hover{
+  background-color: var(--accentwith10opacity);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-reserver:hover i {
+  color: var(--accent);
+}
+
+.btn-reserver:hover .btn-reserver-divider {
+  border-color: var(--accent);
 }

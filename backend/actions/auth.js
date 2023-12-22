@@ -71,7 +71,6 @@ export const loginAction = async (req, res) => {
 export const logoutAction = async (req, res) => {
         try{
                 await req.session.delete()
-                console.log(req.session)
                 res.status(200).clearCookie('session').send({ message: 'Logout successful' });
         }catch(error){
                 console.error(error)
