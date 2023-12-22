@@ -122,6 +122,8 @@ hr {
   border-radius: inherit;
 }
 
+
+
 input[type="radio"]:focus-visible {
   box-shadow: none;
   outline-offset: 4px;
@@ -178,6 +180,10 @@ input[type="password"]:focus-visible {
 input[type="search"]:focus-visible {
   background-color: var(--accentwith10opacity);
   box-shadow: none;
+}
+
+input[type="date"]:focus-visible{
+  outline: 3px solid var(--accent);
 }
 
 #search-btn:focus-visible {
@@ -515,7 +521,7 @@ aside > * + * {
   position: relative;
 }
 
-dialog {
+#connexion-dialog {
   transform: translateY(5%);
   z-index: 999;
   position: absolute;
@@ -529,13 +535,13 @@ dialog {
   opacity: 1;
 }
 
-dialog > form {
+#connexion-dialog > form {
   display: flex;
   flex-direction: column;
   gap: calc(0.25 * var(--rythme));
 }
 
-dialog input {
+#connexion-dialog input {
   appearance: none;
   border: none;
   padding-block: 0.3ch;
@@ -546,7 +552,7 @@ dialog input {
   transition: all 0.2s ease-out;
 }
 
-dialog button {
+#connexion-dialog button {
   background-color: var(--accentwith10opacity);
   border: 1px ridge var(--surface1with98opacity);
   border-radius: 0.4rem;
@@ -558,13 +564,13 @@ dialog button {
   color: var(--surface1with98opacity);
 }
 
-dialog button[type="submit"] {
+#connexion-dialog button[type="submit"] {
   background-color: var(--accent);
   color: var(--bg);
   border: 1px solid var(--accent);
 }
 
-dialog button[type="submit"]:hover {
+#connexion-dialog button[type="submit"]:hover {
   background-color: var(--bg);
   color: var(--accent);
   border: 1px solid var(--accent);
@@ -716,7 +722,7 @@ h2 {
 #page-title {
   font-size: calc(2*var(--rythme));
   font-weight: 700;
-  letter-spacing: -0.05rem;
+  letter-spacing: -0.15rem;
 }
 
 /* PAGINATION */
@@ -832,3 +838,86 @@ h2 {
     scale: 1;
   }
 }
+
+#reservation-dialog {
+  margin: auto;
+  min-height: max-content;
+  min-width: max-content;
+  box-shadow: 2px 2px 5px 1px var(--shadow);
+  border-radius: 0.5rem;
+  border: none;
+  background-color: var(--bg);
+}
+
+html:has(#reservation-dialog[open]) {
+  overflow: hidden;
+}
+
+#inner-dialog-wrapper {
+  display: grid;
+}
+
+#dialog-header-flexer {
+  padding-inline: var(--rythme);
+  padding-block: calc(0.5*var(--rythme));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--rythme);
+  background-color: var(--surface1with50opacity);
+}
+
+#cancel-reservation-dialog{
+  border: none;
+  font-size: var(--rythme);
+  box-shadow: 1px 1px 5px 1px var(--shadow);
+  border-radius: 50%;
+  padding: calc(0.5*var(--rythme));
+  color: var(--surface1with98opacity);
+  background-color: var(--bg);
+  cursor: pointer;
+}
+
+#dialog-title {
+  font-size: calc(1.25*var(--rythme));
+  letter-spacing: -0.05rem;
+  font-weight: 700;
+}
+
+
+#reservation-dialog::backdrop{
+  transition: backdrop-filter .5s ease;
+  backdrop-filter: blur(15px);
+}
+
+.container-livre-reserve {
+  padding: var(--rythme);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(2*var(--rythme));
+}
+
+.img-livre-reserve {
+  object-fit: cover;
+  max-width: 15dvw;
+  max-height: 25dvh;
+}
+
+.flexer-date-retour{
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.5*var(--rythme));
+}
+
+input[type="date"]{
+  border: 3px ridge transparent;
+  border-radius: .2rem;
+  background-color: var(--accentwith10opacity);
+  box-shadow: none;
+  outline: none;
+  padding: calc(.25*var(--rythme));
+  color: var(--surface1with90opacity);
+  transition: all .2s ease-out;
+}
+

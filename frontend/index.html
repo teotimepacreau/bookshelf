@@ -13,8 +13,23 @@
           <div id="header-flexer">
             <span id="page-title">My Bookshelf</span>
             <div id="right-flex">
-              <button id="btn-mes-reservations">Mes réservations<i class="ph-fill ph-basket"><span id="red-card-notif"></span></i>
-              </button>
+              <div id="reservation-group">
+                <button id="btn-mes-reservations">
+                  Mes réservations
+                  <i class="ph-fill ph-basket">
+                    <span id="red-card-notif"></span>
+                  </i>
+                </button>
+                <dialog id="reservation-dialog">
+                  <div id="inner-dialog-wrapper">
+                    <div id="dialog-header-flexer">
+                      <span id="dialog-title">Mes réservations</span>
+                      <i id="cancel-reservation-dialog" class="ph-bold ph-x"></i>
+                    </div>
+                    
+                  </div>
+                </dialog>
+              </div>
               <div id="button-and-dialog"> 
                 <button tabindex="0" id="btn-connexion">Se connecter</button>
                 <dialog id="connexion-dialog">

@@ -123,9 +123,9 @@ const login = async () => {
                 <form id="add-book-form">
                   <div id="flexer-adding-books-fields">
                     <label for="titre-livre">Titre</label>
-                    <input type="text" name="titre" id="titre-livre" autocomplete="on">
+                    <input type="text" name="titre" id="titre-livre" autocomplete="on" required>
                     <label for="auteur-livre">Auteur</label>
-                    <input type="text" name="auteur" id="auteur-livre" autocomplete="on">
+                    <input type="text" name="auteur" id="auteur-livre" autocomplete="on" required>
                     <label for="image-livre">Ajouter l'image de couverture</label>
                     <input type="file" name="image" id="image-livre" accept="image/png, image/jpeg, image/jpg">
                     <div id="add-book-flexer">
