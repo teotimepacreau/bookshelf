@@ -49,6 +49,7 @@ const pagination = async () => {
             book.style.display = "none";
           }
         });
+        window.scrollTo(top)
       });
     });
   });
