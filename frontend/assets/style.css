@@ -39,6 +39,7 @@ html {
   scroll-behavior: smooth;
 }
 
+
 /* Remove default margin in favour of better control in authored CSS */
 body,
 h1,
@@ -162,7 +163,7 @@ dialog button:focus-visible {
   box-shadow: none;
   outline: 1px ridge var(--accent);
   outline-offset: 4px;
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
 }
 
 input[type="text"]:focus-visible,
@@ -216,7 +217,33 @@ body {
 /* HEADER */
 #header-flexer {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+}
+
+#right-flex {
+  display: flex;
+  align-items: center;
+  gap: calc(2*var(--rythme));
+}
+
+#btn-mes-reservations {
+  position: relative;
+  display: flex;
+  gap: 1ch;
+  align-items: center;
+  border: 1px ridge var(--surface1with50opacity);
+  box-shadow: 1px 1px 3px 0px var(--shadow);
+  padding-block: calc(0.4 * var(--rythme));
+  padding-inline: calc(0.6 * var(--rythme));
+  font-weight: 500;
+  border-radius: 0.4rem;
+  transition: all 0.2s ease;
+  line-height: 1rlh;
+}
+
+#btn-mes-reservations i {
+  position: relative;
 }
 
 /* ASIDE */
@@ -455,7 +482,7 @@ aside > * + * {
   background-color: var(--accent);
   color: var(--bg);
   border: 1px ridge var(--accent);
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   padding-block: calc(0.2 * var(--rythme));
   padding-inline: calc(0.4 * var(--rythme));
 }
@@ -469,11 +496,11 @@ aside > * + * {
 #btn-connexion {
   view-transition-name: connexion;
   padding-block: calc(0.4 * var(--rythme));
-  padding-inline: calc(0.8 * var(--rythme));
+  padding-inline: calc(0.6 * var(--rythme));
   font-weight: 500;
   border: 1px ridge transparent;
   background-color: var(--surface1with7opacity);
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   box-shadow: 1px 1px 1px 0px var(--shadow);
   transition: all 0.2s ease;
   line-height: 1rlh;
@@ -522,7 +549,7 @@ dialog input {
 dialog button {
   background-color: var(--accentwith10opacity);
   border: 1px ridge var(--surface1with98opacity);
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   padding-block: calc(0.3 * var(--rythme));
   padding-inline: calc(0.6 * var(--rythme));
 }
@@ -741,8 +768,8 @@ h2 {
   color: white;
   padding-block: calc(0.25*var(--rythme));
   padding-inline: calc(0.5*var(--rythme));
-  border-radius: 0.12rem;
-  box-shadow: 1px 1px 1px 0px var(--shadow);
+  border-radius: 0.15rem;
+  box-shadow: 1px 1px 2px 0px var(--shadow);
 }
 
 .btn-reserver-divider {
@@ -770,4 +797,38 @@ h2 {
 
 .btn-reserver:hover .btn-reserver-divider {
   border-color: var(--accent);
+}
+
+.btn-reserver:disabled {
+  background-color: dimgrey;
+  color: white;
+  cursor: not-allowed;
+  pointer-events: none;/*enlève le changement de style quand hover*/
+}
+
+#red-card-notif{
+  display: none;
+  opacity: 0;
+  scale: .6;
+  animation: fade-in 0.1s ease-out forwards;
+  filter: brightness(10);
+  position: absolute;
+  background: red;
+  box-shadow: 0 0 4px red;
+  backdrop-filter: blur(10px);
+  width: 0.5rem;
+  height: 0.5rem;
+  font-size: 0.8rem;
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  top: -0.4rem;
+  right: -0.3rem;
+}
+
+@keyframes fade-in {
+  to{
+    opacity: 1;
+    scale: 1;
+  }
 }

@@ -37,11 +37,14 @@ async function loadingOrder() {
 
       const {default: pagination} = await import ('./frontJS/pagination.js')
 
+      const {default: reservation} = await import ('./frontJS/reservation.js')
+
       pagination()
       searchFunction();
       filterFunction();
       sorter();
-      await login()
+      await login();
+      reservation()
 
   } catch (error) {
     console.error(error);

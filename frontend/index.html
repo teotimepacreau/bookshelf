@@ -10,25 +10,27 @@
 <body>
     <div id="homepage-container">
         <header>
-          
-    
           <div id="header-flexer">
             <span id="page-title">My Bookshelf</span>
-            <div id="button-and-dialog"> 
-              <button tabindex="0" id="btn-connexion">Se connecter</button>
-              <dialog id="connexion-dialog">
-                <form method="dialog">
-                    <label for="connexion-username">Nom d'utilisateur</label>
-                    <input type="text" name="username" id="connexion-username" autocomplete="on">
-                    <label for="connexion-password">Mot de passe</label>
-                    <input type="password" name="password" id="connexion-password" autocomplete="on">
-                    <div id="connexion-btn-flexer">
-                      <button id="cancel-connexion-dialog" >Annuler</button>
-                      <button id="connexion-submit" type="submit">Me connecter</button>
-                  </div>
-                </form>
-              </dialog>
-            </div> 
+            <div id="right-flex">
+              <button id="btn-mes-reservations">Mes réservations<i class="ph-fill ph-basket"><span id="red-card-notif"></span></i>
+              </button>
+              <div id="button-and-dialog"> 
+                <button tabindex="0" id="btn-connexion">Se connecter</button>
+                <dialog id="connexion-dialog">
+                  <form method="dialog">
+                      <label for="connexion-username">Nom d'utilisateur</label>
+                      <input type="text" name="username" id="connexion-username" autocomplete="on">
+                      <label for="connexion-password">Mot de passe</label>
+                      <input type="password" name="password" id="connexion-password" autocomplete="on">
+                      <div id="connexion-btn-flexer">
+                        <button id="cancel-connexion-dialog" >Annuler</button>
+                        <button id="connexion-submit" type="submit">Me connecter</button>
+                    </div>
+                  </form>
+                </dialog>
+              </div>
+            </div>
           </div>
         </header>
         
@@ -122,7 +124,7 @@
                   </section>
                   <div class="reserver">
                     <button class="btn-reserver">
-                      <span>Me réserver</span>
+                      <span>Réserver</span>
                       <div class="btn-reserver-divider"></div>
                       <i class="ph-fill ph-basket"></i>
                     </button>                      
