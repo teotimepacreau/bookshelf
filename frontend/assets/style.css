@@ -119,11 +119,8 @@ hr {
 
 *:focus-visible {
   transition: all 0.2s ease;
-  box-shadow: 0px 0px 1px 3px var(--surface1);
   border-radius: inherit;
 }
-
-
 
 input[type="radio"]:focus-visible {
   box-shadow: none;
@@ -135,31 +132,6 @@ input[type="checkbox"]:focus-visible {
   box-shadow: none;
   outline-offset: 4px;
   outline-color: var(--surface1);
-}
-
-/* Increase the size of the checkbox */
-input[type="checkbox"] {
-  width: calc(0.6 * var(--rythme)); /* Adjust the width */
-  height: calc(0.6 * var(--rythme)); /* Adjust the height */
-}
-
-input[type="search"] {
-  appearance: none;
-  border: none;
-  outline: none;
-}
-
-input[type="file"] {
-  appearance: none;
-  border: none;
-  background-color: var(--bg);
-  border-radius: 0.2rem 0.2rem 0 0;
-  transition: all 0.2s ease-out;
-}
-
-#btn-connexion:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 6px;
 }
 
 dialog button:focus-visible {
@@ -187,10 +159,48 @@ input[type="date"]:focus-visible{
   outline: 3px solid var(--accent);
 }
 
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
 #search-btn:focus-visible {
   box-shadow: none;
   outline-color: var(--accent);
 }
+
+input[type="checkbox"] {
+  width: calc(0.6 * var(--rythme)); /* Adjust the width */
+  height: calc(0.6 * var(--rythme)); /* Adjust the height */
+}
+
+input[type="search"] {
+  appearance: none;
+  border: none;
+  outline: none;
+}
+
+input[type="file"] {
+  appearance: none;
+  border: none;
+  background-color: var(--bg);
+  border-radius: 0.2rem 0.2rem 0 0;
+  transition: all 0.2s ease-out;
+}
+
+input[type="date"]{
+  border: 3px ridge transparent;
+  border-radius: .2rem;
+  background-color: var(--accentwith10opacity);
+  box-shadow: none;
+  outline: none;
+  padding: calc(.25*var(--rythme));
+  color: var(--surface1with90opacity);
+  transition: all .2s ease-out;
+}
+
+
+
 
 #search-btn:active {
   background-color: var(--accentwith10opacity);
@@ -910,17 +920,6 @@ html:has(#reservation-dialog[open]) {
   display: flex;
   flex-direction: column;
   gap: calc(0.5*var(--rythme));
-}
-
-input[type="date"]{
-  border: 3px ridge transparent;
-  border-radius: .2rem;
-  background-color: var(--accentwith10opacity);
-  box-shadow: none;
-  outline: none;
-  padding: calc(.25*var(--rythme));
-  color: var(--surface1with90opacity);
-  transition: all .2s ease-out;
 }
 
 #container-for-submit-resa {
