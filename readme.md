@@ -8,6 +8,7 @@
 - fixing CORS issues (origin, methods, credentials)
 - authentification through session secure cookies. Learned the difference betwen BasicAuth, SessionAuth and JWT
 - authorization depending on the route thanks to pre-handler function (it's Fastify alternative to middleware)
+- Scroll-Progress-Timeline CSS animation, to apply animation when element enter the viewport on scroll
 - viewTransitions API to animate page movements
 - using <dialog> Modal & Non-Modal
 - HTML <template> functionnality
