@@ -3,6 +3,7 @@
   --bg: oklch(99% 0.006 200);
   --white: oklch(99% 0.002 200);
   --accent: oklch(30% 0.2 200);
+  --accentwith80opacity: oklch(from var(--accent) l c h / 80%);
   --accentwith10opacity: oklch(from var(--accent) l c h / 10%);
   --surface1: oklch(50% 0.02 200);
   --surface1with2opacity: oklch(from var(--surface1) l c h / 2%);
@@ -919,5 +920,26 @@ input[type="date"]{
   padding: calc(.25*var(--rythme));
   color: var(--surface1with90opacity);
   transition: all .2s ease-out;
+}
+
+#container-for-submit-resa {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+#btn-valider-resa {
+  grid-column: 2 / 3;
+  border: 1px ridge transparent;
+  background-color: var(--accent);
+  min-height: 7dvh;
+  color: var(--bg);
+  border-top-left-radius: 0.5rem;
+  font-size: calc(0.85*var(--rythme));
+  transition: all 0.3s ease-out;
+  box-shadow: -1px -1px 2px 0px var(--shadow);
+}
+
+#btn-valider-resa:hover {
+  background-color: var(--accentwith80opacity);
 }
 
