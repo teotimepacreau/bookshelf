@@ -8,6 +8,8 @@
 - fixing CORS issues (origin, methods, credentials)
 - authentification through session secure cookies. Learned the difference betwen BasicAuth, SessionAuth and JWT
 - authorization depending on the route thanks to pre-handler function (it's Fastify alternative to middleware)
+- viewTransitions API to animate page movements
+- using <dialog> Modal & Non-Modal
 - HTML <template> functionnality
 
 # In-depth details of the project :
