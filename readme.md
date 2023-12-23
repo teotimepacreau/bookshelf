@@ -29,3 +29,4 @@
 - Adding book to the collection : when addBookForm is received it visually adds the book to the page, and adds it to the DB. At reload : it combines "goodreads" & "bookviaform" table [displayAddedViaFormBooks.js](./frontend/utils/displayAddedViaFormBooks.js)
 - Logout function : clicking on the logout notif delete the session cookie, disallow to add a book to the collection and hides the add book button
 - Pagination : displaying only a limited amount of books card, setting dynamically a button for each page, styling the active button, displaying books between a certain range for each page. [pagination.js](./frontend/frontJS/pagination.js)
+- Reservation : allowing to reserve a book. When clicking on the dedicated button it adds it to a modal. Then user select the date to return and validate. Data is sent to the backend and added to the DB. The book now appears as reserved and it visually inform other users. [reservation.js](./frontend/frontJS/reservation.js)
