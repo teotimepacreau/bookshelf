@@ -665,6 +665,7 @@ aside > * + * {
 
 /* BOOK CARD */
 .book-card {
+  position: relative;
   flex-direction: column;
   max-width: 400px;
   background-color: var(--white);
@@ -943,3 +944,38 @@ input[type="date"]{
   background-color: var(--accentwith80opacity);
 }
 
+.display-popup{
+  font-weight: 600;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  font-size: calc(1*var(--rythme));
+  color: var(--bg);
+  background-color: var(--surface1with50opacity);
+  padding: var(--rythme);
+  backdrop-filter: blur(0.5px);
+  box-shadow: 1px 1px 2px 0px var(--shadow);
+  background-image: linear-gradient(
+    0deg,
+    hsla(0, 0%, 35.29%, 0) 0%,
+    hsla(0, 0%, 34.53%, 0.034375) 16.36%,
+    hsla(0, 0%, 32.42%, 0.125) 33.34%,
+    hsla(0, 0%, 29.18%, 0.253125) 50.1%,
+    hsla(0, 0%, 24.96%, 0.4) 65.75%,
+    hsla(0, 0%, 19.85%, 0.546875) 79.43%,
+    hsla(0, 0%, 13.95%, 0.675) 90.28%,
+    hsla(0, 0%, 7.32%, 0.765625) 97.43%,
+    hsla(0, 0%, 0%, 0.8) 100%
+  );
+}
+
+.display-popup > * {
+  margin-top: calc(2*var(--rythme));
+  display: grid;
+  justify-content: center;
+  padding-block: calc(0.25*var(--rythme));
+  padding-inline: calc(0.5*var(--rythme));
+  backdrop-filter: blur(15px);
+  border-radius: .5rem;
+  box-shadow: 1px 1px 2px 0px var(--shadow);
+}

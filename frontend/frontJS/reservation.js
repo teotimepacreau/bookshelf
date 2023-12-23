@@ -87,6 +87,21 @@ const reservation = async () => {
     });
   }
   postReservationData();
+
+  async function hideResa(){
+    const cards = document.querySelectorAll('.book-card')
+    cards.forEach((card)=>{
+      if(card.querySelector('[data-resa]').innerText){
+        const popup = document.createElement('div')
+        const innerTextOfPopup = document.createElement('span')
+        innerTextOfPopup.textContent = `Livre déjà réservé, retour prévu le ${card.querySelector('[data-resa]').innerText}`
+        popup.classList.add('display-popup')
+        popup.append(innerTextOfPopup)
+        card.append(popup)
+      }
+    })
+  }
+  hideResa()
 };
 
 export default reservation;

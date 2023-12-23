@@ -25,15 +25,17 @@ export default async function displayBooks(){
                     const publisher = card.querySelector("[data-publisher]")
                     publisher.textContent = row.Publisher
 
+                    const resa = card.querySelector("[data-resa]")
+                    resa.textContent = row.date
+
                     const averagerating = card.querySelector("[data-averagerating]")
+
                     averagerating.textContent += row.AverageRating
 
                     containerForAllCards.append(card)//attache la carte au container       `
                 }
             }
         }
-
-        
     }catch(error){
         console.error(error)
     }
