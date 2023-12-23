@@ -57,23 +57,21 @@ const reservation = async () => {
     const submitBtn = dialog.querySelector("#btn-valider-resa");
     submitBtn.addEventListener("click", async () => {
       // PSEUDO CODE : je récupère tous les titres et toutes les dates donc je me retouve avec un array, je souhaite mettre chaque groupe dans l'array dans un objet séparé
-      const titles = dialog.getElementsByTagName('h2');
-      console.log(titles)
+      const titles = Array.from(dialog.getElementsByTagName("h2"));//Array.from pour pourvoir utiliser forEach car ne marche pas nativement sur une HTML collection
+      console.log(titles);
       const dates = dialog.querySelectorAll("#date-retour");
-      console.log(dates)
-      const arrayOfReservationData = []
-      let itemData = {}
-      for(let item of titles){
-        itemData = {title: item.innerText}
-        arrayOfReservationData.push(itemData)
-      }
-      for (let item of dates){
-        arrayOfReservationData.forEach((element)=>{
-          element.date = item.value
-        })
-      }
+      console.log(dates);
 
-      console.log(arrayOfReservationData)
+      const arrayOfReservationData = [];
+      titles.forEach((item, index) => {
+        let itemData = {
+          title: item.innerText,
+          date: dates[index].value//l'index est le même que celui de chaque titre
+        };
+        arrayOfReservationData.push(itemData);
+      });
+
+      console.log(arrayOfReservationData);
       try {
         let response = await fetch("http://localhost:3000/reservation", {
           method: "POST",
@@ -88,7 +86,7 @@ const reservation = async () => {
       }
     });
   }
-  postReservationData()
+  postReservationData();
 };
 
 export default reservation;

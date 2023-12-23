@@ -17,6 +17,8 @@ import { passBookAddedViaFormToFront } from "./controllers/passBookAddedViaFormT
 import { loginAction, logoutAction } from "./actions/auth.js";
 import addBook from "./actions/addBook.js";
 
+import { reservation } from "./actions/reservation.js";
+
 import cors from '@fastify/cors'
 
 import fastifyFormBody from "@fastify/formbody"
@@ -102,6 +104,8 @@ app.route({
     preHandler: isAuthenticated, // Apply the middleware here
     handler: addBook //voir ./actions/addBook.js
 });
+
+app.post('/reservation', reservation)
 
 // START SERVER
 const start = async () => {
