@@ -30,7 +30,7 @@ const rootDir = (dirname(fileURLToPath(import.meta.url)));//car ESModules ne sup
 
 // CORS
 await app.register(cors, { 
-    origin: 'http://localhost:5173',
+    origin: 'https://bookshelf.teotimepacreau.fr',
     methods: 'GET, POST',
     credentials: true, // Allow credentials (cookies)
 })
