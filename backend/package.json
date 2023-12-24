@@ -22,5 +22,8 @@
     "fastify": "^4.24.3",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.0"
   }
 }

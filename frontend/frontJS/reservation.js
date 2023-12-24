@@ -1,5 +1,6 @@
 // PSEUDO CODE : au clic sur le bouton "réserver", je veux que le bouton devienne grisé et que s'ajoute dans le panier le livre en question
 
+
 const reservation = async () => {
   // NOTIF
   const redNotif = document.getElementById("red-card-notif");
@@ -73,7 +74,7 @@ const reservation = async () => {
 
       console.log(arrayOfReservationData);
       try {
-        let response = await fetch("http://localhost:3000/reservation", {
+        let response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/reservation`, {
           method: "POST",
           credentials: "include", // OBLIGATOIRE POUR PERMETTRE DINCLURE LES COOKIES A LA REQUETE, SI ABSENT LES COOKIES NE SERONT PAS ENVOYES
           headers: {

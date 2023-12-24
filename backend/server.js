@@ -111,7 +111,7 @@ app.post('/reservation', reservation)
 // START SERVER
 const start = async () => {
     try{
-        await app.listen({port: 3000});
+        await app.listen({port: 3000, host:"0.0.0.0"});
         console.log('Server is running at 3000')
     }catch(err){
         console.error(err)

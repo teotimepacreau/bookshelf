@@ -1,3 +1,5 @@
+=
+
 const login = async () => {
   const btn = document.querySelector("#btn-connexion");
   const dialog = document.querySelector("#connexion-dialog");
@@ -40,7 +42,7 @@ const login = async () => {
       password,
     };
     try {
-      response = await fetch("http://localhost:3000/login", {
+      response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/login`, {
         method: "POST",
         credentials: "include", // OBLIGATOIRE POUR PERMETTRE DINCLURE LES COOKIES A LA REQUETE, SI ABSENT LES COOKIES NE SERONT PAS ENVOYES
         headers: {
@@ -81,7 +83,7 @@ const login = async () => {
           let logoutBtn = await addConnectedNotif();
           logoutBtn.addEventListener("click", async () => {
             try {
-              let logoutResponse = await fetch("http://localhost:3000/logout");
+              let logoutResponse = await fetch(`${import.meta.env.VITE_BACKEND_URL}/logout`);
               if (logoutResponse.status === 200) {
                 logoutBtn.parentElement.style.display = "none";
                 const addingBooksContainer = document.querySelector(
@@ -158,7 +160,7 @@ const login = async () => {
                 const formData = new FormData(addBookForm);
                 try {
                   const response = await fetch(
-                    "http://localhost:3000/addbook",
+                    `${import.meta.env.VITE_BACKEND_URL}/addbook`,
                     {
                       method: "POST",
                       credentials: "include", // OBLIGATOIRE CAR SI COOKIE ABSENT ALORS LE USER NEST PAS AUTHENTIFIE
@@ -183,7 +185,7 @@ const login = async () => {
                     const img = card.querySelector("[data-img]");
                     img.src = new URL(
                       responseData.coverImgPath,
-                      "http://localhost:3000/"
+                      `${import.meta.env.VITE_BACKEND_URL}`
                     );
 
                     const title = card.querySelector("[data-title]");
@@ -264,7 +266,7 @@ const login = async () => {
                   const formData = new FormData(addBookForm);
                   try {
                     const response = await fetch(
-                      "http://localhost:3000/addbook",
+                      `${import.meta.env.VITE_BACKEND_URL}/addbook`,
                       {
                         method: "POST",
                         credentials: "include", // OBLIGATOIRE CAR SI COOKIE ABSENT ALORS LE USER NEST PAS AUTHENTIFIE
@@ -289,7 +291,7 @@ const login = async () => {
                       const img = card.querySelector("[data-img]");
                       img.src = new URL(
                         responseData.coverImgPath,
-                        "http://localhost:3000/"
+                        `${import.meta.env.VITE_BACKEND_URL}`
                       );
 
                       const title = card.querySelector("[data-title]");
