@@ -1,4 +1,4 @@
-=
+
 
 const login = async () => {
   const btn = document.querySelector("#btn-connexion");
