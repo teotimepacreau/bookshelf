@@ -234,6 +234,8 @@ body {
 /* HEADER */
 #header-flexer {
   display: flex;
+  flex-wrap: wrap;
+  gap: var(--rythme);
   align-items: center;
   justify-content: space-between;
 }
@@ -977,4 +979,32 @@ html:has(#reservation-dialog[open]) {
   backdrop-filter: blur(15px);
   border-radius: .5rem;
   box-shadow: 1px 1px 2px 0px var(--shadow);
+}
+
+/* MOBILE */
+@media (width<750px){
+  aside {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--rythme);
+    flex-wrap: wrap;
+  }
+  aside > * + * {
+    margin-top: unset;
+}
+#search-bar-container {
+  flex: 1 0 100%;
+}
+  #main-container {
+    display: block;
+  }
+
+  #library {
+    margin-top: var(--rythme);
+  }
+
+  #pager-container {
+    margin-top: var(--rythme);
+  }
 }

@@ -19,6 +19,7 @@
     "@fastify/view": "^8.2.0",
     "bcrypt": "^5.1.1",
     "bookcovers": "^0.1.2",
+    "dotenv": "^16.3.1",
     "fastify": "^4.24.3",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.6"

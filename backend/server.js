@@ -6,6 +6,9 @@ import fastifyStatic from "@fastify/static";
 // UPLOAD FILES
 import fastifyMultipart from "@fastify/multipart";
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";//CAR EN MODULE IMPORT path et __dirname ne fonctionnent pas 
@@ -41,9 +44,12 @@ app.register(fastifyCookie)
 // SECURE SESSION permet de créer un cookie signé sur le poste de l'utilisateur. Sécurisé car l'utilisateur ne pourra pas modifier le cookie, en effet seul notre serveur sera capable de générer un tel cookie.
 app.register(fastifySecureSession, {
     cookieName: 'session',
-    key: readFileSync(join(rootDir, 'secret-key')),
+    key: Buffer.from(process.env.COOKIE_KEY, 'hex'),
     cookie: {
         path: '/',
+        sameSite: 'None',
+        secure: true,
+        httpOnly: true,
     }
 })
 
