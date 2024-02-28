@@ -16,11 +16,12 @@ Frontend : HTML, CSS, JS, VIte
 - using Vite for frontend to benefits of Hot Module Replacement and imports every module in one JS file logic
 - fixing CORS issues (origin, methods, credentials)
 - authentification through session secure cookies. Learned the difference betwen BasicAuth, SessionAuth and JWT
+- encrypting credentials with BCRYPT in order to store in db
 - authorization depending on the route thanks to pre-handler function (it's Fastify alternative to middleware)
 - Scroll-Progress-Timeline CSS animation, to apply animation when element enter the viewport on scroll
 - viewTransitions API to animate page movements
-- using <dialog> Modal & Non-Modal
-- HTML <template> functionnality
+- using `<dialog>` Modal & Non-Modal
+- HTML `<template>` functionnality
 
 # In-depth details of the project :
 ## Backend
